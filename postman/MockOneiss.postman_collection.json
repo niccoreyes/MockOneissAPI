@@ -1,0 +1,62 @@
+{
+  "info": {
+    "name": "MockOneISS API - Postman",
+    "_postman_id": "1d6b8c66-0000-4000-8000-000000000000",
+    "description": "Collection for testing the local mock OneISS SOAP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "pushInjuryData",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=UTF-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"http://oneiss.doh.gov.ph/webservice\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:pushInjuryData>\n      <Data><![CDATA[{\"Pat_Last_Name\":\"Platon\",\"Pat_First_Name\":\"Jonathan\"}]]></Data>\n    </urn:pushInjuryData>\n  </soapenv:Body>\n</soapenv:Envelope>"
+        },
+        "url": {
+          "raw": "{{base_url}}/index.php",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "index.php"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "pushApirData",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=UTF-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"http://oneiss.doh.gov.ph/webservice\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:pushApirData>\n      <Data><![CDATA[{\"sample\":\"apir\"}]]></Data>\n    </urn:pushApirData>\n  </soapenv:Body>\n</soapenv:Envelope>"
+        },
+        "url": {
+          "raw": "{{base_url}}/index.php",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "index.php"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
