@@ -1,6 +1,6 @@
-# mockOneISS
+# mockONEISS
 
-Minimal Dockerized mock of the OneISS SOAP API (pushInjuryData, pushApirData, webInjury).
+Minimal Dockerized mock of the ONEISS SOAP API (pushInjuryData, pushApirData, webInjury).
 
 Quick start (Windows PowerShell):
 

@@ -1,4 +1,4 @@
-Postman configuration for MockOneISS
+Postman configuration for MockONEISS
 
 Files:
 - `MockOneiss.postman_collection.json` — Postman collection (pushInjuryData, pushApirData)

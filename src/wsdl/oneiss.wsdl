@@ -8,14 +8,167 @@
 
   <types>
     <xsd:schema targetNamespace="http://oneiss.doh.gov.ph/webservice">
+
+      <!-- pushInjuryData request/response -->
       <xsd:element name="pushInjuryData">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="Data" type="xsd:string" minOccurs="0"/>
+            <!-- All fields taken from the ONEISS pushInjuryData specification -->
+            <xsd:element name="Pat_Facility_No" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Status" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="rstatuscode" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="date_report" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="time_report" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="reg_no" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="tempreg_no" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="hosp_no" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="hosp_reg_no" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="hosp_cas_no" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="ptype_code" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Last_Name" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_First_Name" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Middle_Name" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Sex" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Date_of_Birth" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Current_Address_Region" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Current_Address_Province" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Current_Address_City" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="temp_regcode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="temp_provcode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="temp_citycode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Age_Years" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Age_Month" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Age_Day" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Phil_Health_No" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="plc_regcode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="plc_provcode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="plc_ctycode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="inj_date" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="inj_time" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Encounter_Date" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Encounter_Time" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="inj_intent_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="first_aid_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="firstaid_others" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="firstaid_others2" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="mult_inj" type="xsd:string" minOccurs="0"/>
+            <!-- Nature of injury fields (many) -->
+            <xsd:element name="noi_abrasion" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_abradtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_avulsion" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_avuldtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_burn_r" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_burn1" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_burn2" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_burn3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_burn4" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_burndtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_concussion" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_concussiondtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_contusion" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_contudtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_frac_clo" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_frcldtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_frac_ope" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_fropdtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_owound" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_owoudtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_amp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_ampdtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_others" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="noi_otherinj" type="xsd:string" minOccurs="0"/>
+            <!-- External cause fields -->
+            <xsd:element name="ext_bite" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_bite_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_burn_r" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ref_burn_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_burn_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_chem" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_chem_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_sharp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_sharp_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_drown_r" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ref_drowning_cope" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_drown_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_expo_nature_r" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ref_expnature_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_expo_nature_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_fall" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_falldtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_firecracker_r" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="firecracker_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_firecracker_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_sexual" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_gun" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_gun_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_hang" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_maul" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_transport" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_other" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ext_other_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="vehicle_type_id" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ref_veh_acctype_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="vehicle_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="pat_veh_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="etc_veh" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="etc_veh_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="position_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="pos_pat_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="place_occ_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="poc_wp_spec" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="poc_etc_spec" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="activity_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="act_etc_spec" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="risk_none" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="risk_alcliq" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="risk_sleep" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="risk_smoke" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="risk_mobpho" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="risk_other" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="risk_etc_spec" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_none" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_airbag" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_helmet" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_cseat" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_sbelt" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_unkn" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_drown" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_other" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="safe_other_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="trans_ref" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="trans_ref2" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ref_hosp_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ref_hosp_code_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ref_physician" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="status_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="mode_transport_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="stat_reachdtl" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Diagnosis" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="icd_10_nature_er" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="icd_10_external_er" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disposition_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disp_er_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disp_er_sp_oth" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="outcome_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="complete_diagnosis" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disp_inpat" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disp_inpat_oth" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disp_inpat_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disp_inpat_sp2" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="outcome_inpat" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="icd10_nature_inpatient" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="icd_10_ext_inpatient" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="comments" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="fac_regno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="upload" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="class" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="pre_date" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="pno" type="xsd:string" minOccurs="0"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
 
+      <!-- pushInjuryData response -->
       <xsd:element name="pushInjuryDataResponse">
         <xsd:complexType>
           <xsd:sequence>
@@ -24,10 +177,87 @@
         </xsd:complexType>
       </xsd:element>
 
+      <!-- pushApirData request/response (fields based on pushApirData spec) -->
       <xsd:element name="pushApirData">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="Data" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Facility_No" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="reg_no" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="tempreg_no" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="sentinel" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="date_report" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="time_report" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Last_Name" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_First_Name" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Middle_Name" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Suffix" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Date_of_Birth" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Age_Years" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Age_Months" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Age_Days" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Pat_Sex" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Current_Address_StreetName" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Current_Address_Region" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Current_Address_Province" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Current_Address_City" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Pat_Current_Address_Barangay" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="telephone_no" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="four_ps_member" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="inj_date" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="inj_time" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="plc_pat_str" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="poi_sameadd" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="poi_regcode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="poi_provcode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="poi_citycode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="poi_bgycode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="place_of_occurence" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="place_of_occurence_others" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Encounter_Date" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="Encounter_Time" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="referral" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="reffered_from" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="involve_code" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="typeof_injurycode" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="injury_type_others" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="mult_inj" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="if_fireworks_related" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="if_fireworks_related_2" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="if_fireworks_related_3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="diagnosis" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="analoc_eye" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_head" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_neck" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_chest" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_back" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_abdomen" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_buttocks" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_hand" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_forearmarm" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_pelvic" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_thigh" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_knee" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_legs" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="analoc_foot" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="firecracker_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="firecracker_others" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="firecracker_legality" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="liquor" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="treatment_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="treatment_code2" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="treatment_code3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="given_others" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="disposition_code" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="transferred_to" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="transferred_to_sp" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="outcome_code" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="date_died" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="aware" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="educ_material" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="fac_regno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Facility_Reg" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Facility_Prov" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Facility_CityMun" type="xsd:string" minOccurs="0"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -40,14 +270,8 @@
         </xsd:complexType>
       </xsd:element>
 
-      <xsd:element name="webInjury">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="Data" type="xsd:string" minOccurs="0"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-
+      <!-- webInjury: reuse pushInjuryData structure for incoming data (select/more operations could be added later) -->
+      <xsd:element name="webInjury" type="tns:pushInjuryData"/>
       <xsd:element name="webInjuryResponse">
         <xsd:complexType>
           <xsd:sequence>
@@ -103,7 +327,7 @@
   </binding>
 
   <service name="OneissService">
-    <documentation>Mock OneISS SOAP Service</documentation>
+    <documentation>Mock ONEISS SOAP Service - expanded schema</documentation>
     <port name="OneissPort" binding="tns:OneissBinding">
       <soap:address location="http://localhost:8080/index.php"/>
     </port>

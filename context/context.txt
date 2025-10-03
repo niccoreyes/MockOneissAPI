@@ -232,7 +232,7 @@ A minimal WSDL that declares pushInjuryData expecting a <Data> element (string) 
   </binding>
 
   <service name="OneissService">
-    <documentation>Mock OneISS SOAP Service</documentation>
+    <documentation>Mock ONEISS SOAP Service</documentation>
     <port name="OneissPort" binding="tns:OneissBinding">
       <soap:address location="http://localhost:8080/index.php"/>
     </port>
