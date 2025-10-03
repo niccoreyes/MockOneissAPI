@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="d10ad784-4cd3-43e4-8f1c-c2b6eca8ea9d" activeEnvironment="Default" name="oneiss" resourceRoot="" soapui-version="5.9.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="08fd9d19-6684-45f3-8883-db567cc67357" wsaVersion="NONE" name="Online National Electronic Surveillance SystemBinding" type="wsdl" bindingName="{oneiss.doh.gov.ph/webservice/index.php?wsdl}Online National Electronic Surveillance SystemBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/GitHub/mockOneiss/oneissWeb/wsdl.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\GitHub\mockOneiss\oneissWeb\wsdl.xml"><con:part><con:url>file:\C:\GitHub\mockOneiss\oneissWeb\wsdl.xml</con:url><con:content><![CDATA[<definitions targetNamespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="oneiss.doh.gov.ph/webservice/index.php?wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema targetNamespace="oneiss.doh.gov.ph/webservice/index.php?wsdl">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+    </xsd:schema>
+  </types>
+  <message name="oneissRequest"/>
+  <message name="oneissResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="pushInjuryDataRequest">
+    <part name="Data" type="xsd:string"/>
+  </message>
+  <message name="pushInjuryDataResponse">
+    <part name="Return" type="xsd:string"/>
+  </message>
+  <message name="pushApirDataRequest">
+    <part name="Data" type="xsd:string"/>
+  </message>
+  <message name="pushApirDataResponse">
+    <part name="Return" type="xsd:string"/>
+  </message>
+  <message name="webInjuryRequest">
+    <part name="Data" type="xsd:string"/>
+  </message>
+  <message name="webInjuryResponse">
+    <part name="Return" type="xsd:string"/>
+  </message>
+  <message name="DataSelectRequest">
+    <part name="Data" type="xsd:string"/>
+  </message>
+  <message name="DataSelectResponse">
+    <part name="Return" type="xsd:string"/>
+  </message>
+  <portType name="Online National Electronic Surveillance SystemPortType">
+    <operation name="oneiss">
+      <input message="tns:oneissRequest"/>
+      <output message="tns:oneissResponse"/>
+    </operation>
+    <operation name="pushInjuryData">
+      <input message="tns:pushInjuryDataRequest"/>
+      <output message="tns:pushInjuryDataResponse"/>
+    </operation>
+    <operation name="pushApirData">
+      <input message="tns:pushApirDataRequest"/>
+      <output message="tns:pushApirDataResponse"/>
+    </operation>
+    <operation name="webInjury">
+      <input message="tns:webInjuryRequest"/>
+      <output message="tns:webInjuryResponse"/>
+    </operation>
+    <operation name="DataSelect">
+      <input message="tns:DataSelectRequest"/>
+      <output message="tns:DataSelectResponse"/>
+    </operation>
+  </portType>
+  <binding name="Online National Electronic Surveillance SystemBinding" type="tns:Online National Electronic Surveillance SystemPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="oneiss">
+      <soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/oneiss" style="rpc"/>
+      <input>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="pushInjuryData">
+      <soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/pushInjuryData" style="rpc"/>
+      <input>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="pushApirData">
+      <soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/pushApirData" style="rpc"/>
+      <input>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="webInjury">
+      <soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/webInjury" style="rpc"/>
+      <input>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="DataSelect">
+      <soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/DataSelect" style="rpc"/>
+      <input>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Online National Electronic Surveillance System">
+    <port name="Online National Electronic Surveillance SystemPort" binding="tns:Online National Electronic Surveillance SystemBinding">
+      <soap:address location="https://oneiss.doh.gov.ph:443/webservice/index.php"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://oneiss.doh.gov.ph:443/webservice/index.php</con:endpoint></con:endpoints><con:operation id="cf20c18e-4dd9-41b0-bcb4-550789acfef7" isOneWay="false" action="https://oneiss.doh.gov.ph/webservice/index.php/DataSelect" name="DataSelect" bindingOperationName="DataSelect" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ea9413f7-475b-46ca-a716-e5a6f159fd87" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://oneiss.doh.gov.ph:443/webservice/index.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ind="oneiss.doh.gov.ph/webservice/index.php?wsdl">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ind:DataSelect soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">\r
+         <Data xsi:type="xsd:string">?</Data>\r
+      </ind:DataSelect>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://oneiss.doh.gov.ph/webservice/index.php/DataSelect"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="49439147-8ddb-4df6-b1d6-b8bf3d1320c1" isOneWay="false" action="https://oneiss.doh.gov.ph/webservice/index.php/oneiss" name="oneiss" bindingOperationName="oneiss" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e64962c1-90fc-4341-9d13-66c6a3b41e7a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://oneiss.doh.gov.ph:443/webservice/index.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ind="oneiss.doh.gov.ph/webservice/index.php?wsdl">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ind:oneiss soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://oneiss.doh.gov.ph/webservice/index.php/oneiss"/></con:call></con:operation><con:operation id="478158ff-9680-4ceb-b6d9-17ac7f1b28f6" isOneWay="false" action="https://oneiss.doh.gov.ph/webservice/index.php/pushApirData" name="pushApirData" bindingOperationName="pushApirData" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc9dd7fd-2c35-43ac-a81a-44667d36cf99" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://oneiss.doh.gov.ph:443/webservice/index.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ind="oneiss.doh.gov.ph/webservice/index.php?wsdl">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ind:pushApirData soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">\r
+         <Data xsi:type="xsd:string">?</Data>\r
+      </ind:pushApirData>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://oneiss.doh.gov.ph/webservice/index.php/pushApirData"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="9be3d2dd-e4f9-4307-9de2-15fff443e9bc" isOneWay="false" action="https://oneiss.doh.gov.ph/webservice/index.php/pushInjuryData" name="pushInjuryData" bindingOperationName="pushInjuryData" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c97d90de-71be-4161-8183-f691f9401924" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://oneiss.doh.gov.ph:443/webservice/index.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ind="oneiss.doh.gov.ph/webservice/index.php?wsdl">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ind:pushInjuryData soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">\r
+         <Data xsi:type="xsd:string">?</Data>\r
+      </ind:pushInjuryData>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://oneiss.doh.gov.ph/webservice/index.php/pushInjuryData"/></con:call></con:operation><con:operation id="9981265e-6ba8-4e71-ab7d-6d1f225314ed" isOneWay="false" action="https://oneiss.doh.gov.ph/webservice/index.php/webInjury" name="webInjury" bindingOperationName="webInjury" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dbf2ddfd-56b6-4de0-85d7-2c0560de62d7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://oneiss.doh.gov.ph:443/webservice/index.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ind="oneiss.doh.gov.ph/webservice/index.php?wsdl">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ind:webInjury soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">\r
+         <Data xsi:type="xsd:string">?</Data>\r
+      </ind:webInjury>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://oneiss.doh.gov.ph/webservice/index.php/webInjury"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
