@@ -1,43 +1,135 @@
-# mockONEISS
+# Mock ONEISS SOAP API (Local Test Server)
 
-Minimal Dockerized mock of the ONEISS SOAP API (pushInjuryData, pushApirData, webInjury).
+This repository is a mock implementation of selected ONEISS SOAP operations to help you test client integrations locally. It is NOT the official ONEISS service and is not affiliated with the Department of Health. Use it to simulate what the ONEISS API could look like and to validate your client payloads end-to-end.
 
-Quick start (Windows PowerShell):
+What you get
+- SOAP endpoint that mirrors key ONEISS operations: `pushInjuryData`, `pushApirData`, `webInjury`, plus `oneiss` (ping) and `DataSelect`.
+- Official WSDL alignment (RPC/encoded, single string parameter named `Data`).
+- Request persistence to a local SQLite DB and an Admin UI for browsing, filtering, and CSV export.
+- Sample payloads and Postman collection to speed up testing.
 
-1. Build and run
-   docker-compose up --build -d
+---
 
-2. Open WSDL in a browser
-   http://localhost:8080/index.php?wsdl
+## Run locally
 
-3. Test with curl (PowerShell)
-   curl -v -H "Content-Type: text/xml;charset=UTF-8" --data-binary @src/request-samples/pushInjuryData.xml http://localhost:8080/index.php
+Prerequisites
+- Docker Desktop (recommended)
 
-4. Test with PHP SoapClient (requires PHP with ext-soap on host)
-   $client = new SoapClient('http://localhost:8080/index.php?wsdl', ['trace'=>1]);
-   $res = $client->pushInjuryData(['Data' => json_encode(['Pat_Last_Name'=>'Platon'])]);
-   var_dump($res);
+Start the server
+- Windows PowerShell / macOS / Linux
+  - docker compose up --build -d
 
-What I created
-- `Dockerfile` — PHP 8.2 + Apache + ext-soap
-- `docker-compose.yml` — runs container on port 8080
-- `src/public/index.php` — front controller, serves WSDL and SOAP POSTs
-- `src/Service.php` — mock implementation for three operations
-- `src/wsdl/oneiss.wsdl` — minimal WSDL exposing those operations
-- `src/request-samples/*.xml` — sample SOAP requests
+Stop the server
+- docker compose down
 
-Next options (tell me which):
-- Change port (default 8080) — specify a port.
-- Full WSDL: generate a WSDL that includes the full complex type schema for all fields from your docs (I can generate it automatically or by hand). This will make SoapClient strongly-typed.
-- Laminas AutoDiscover variant: add Composer and `laminas/laminas-soap` so WSDL is generated from PHP class annotations (recommended if you want full complex types and maintainability).
-- Persisted mock responses / dynamic rules: map incoming fields to different response codes, or store received records in a local SQLite DB.
+---
 
-Questions I have
-1) Which port do you want the mock to listen on (current: 8080)?
-2) Do you want the full WSDL (all fields) or is the minimal WSDL sufficient for testing?
-3) Do you want authentication or TLS for the mock (not recommended for local dev unless needed)?
+## Endpoints
 
-If you want I can also:
-- Add a small test script that runs inside CI (GitHub Actions) to spin up the container and run the sample request.
-- Produce the Laminas/composer variant.
+- SOAP endpoint (POST):
+  - http://localhost:8080/webservice/index.php
+- WSDL (served locally):
+  - http://localhost:8080/webservice/index.php?wsdl
+- Admin UI (browse requests, filter, CSV export):
+  - http://localhost:8080/webservice/admin.php
+- AutoDiscover WSDL (optional, if you want a generated WSDL):
+  - http://localhost:8080/webservice/autodiscover.php?wsdl
+
+---
+
+## Postman
+
+Files
+- postman/MockOneiss.postman_collection.json
+- postman/MockOneiss.postman_environment.json
+
+Steps
+1) Import both files in Postman.
+2) Select environment “MockONEISS - Local”.
+3) Run any request (e.g., “pushApirData (XML in CDATA)”).
+
+Notes
+- Requests post to `{{base_url}}/webservice/index.php` with header `Content-Type: text/xml;charset=UTF-8`.
+- The collection includes: WSDL download, oneiss (ping), pushInjuryData, pushApirData, webInjury, DataSelect.
+
+---
+
+## CLI tests
+
+PowerShell (Windows / PowerShell Core)
+- scripts/test_pushInjuryData.ps1
+- scripts/test_pushApirData.ps1
+- scripts/test_webInjury.ps1
+- scripts/test_oneiss.ps1
+- scripts/test_dataSelect.ps1
+- scripts/run_all_tests.ps1 — runs all tests and fails if any test fails
+
+Bash (Linux / macOS / WSL)
+- scripts/test_all.sh — runs pushInjuryData, pushApirData, webInjury
+
+All tests expect `<oneiss><response_code>104</response_code></oneiss>` for success.
+
+---
+
+## Payloads and formats
+
+The official ONEISS WSDL uses RPC/encoded, where each operation takes a single parameter named `Data` of type `xsd:string`. Many clients still prefer composing XML for readability. To keep XML while satisfying the WSDL, we wrap the XML inside CDATA so it is transmitted as a string.
+
+You can find ready-to-send samples under `src/request-samples/`.
+
+- pushApirData (XML-in-CDATA)
+  - File: `src/request-samples/pushApirData.xml`
+  - Structure:
+    - SOAP Envelope → Body → `urn:pushApirData` → `<Data><![CDATA[ <OneissData>...fields...</OneissData> ]]></Data>`
+- pushInjuryData (XML-in-CDATA)
+  - File: `src/request-samples/pushInjuryData.xml`
+  - Structure:
+    - SOAP Envelope → Body → `urn:pushInjuryData` → `<Data><![CDATA[ <OneissData>...fields...</OneissData> ]]></Data>`
+- webInjury (structured XML)
+  - File: `src/request-samples/webInjury.xml`
+  - Structure:
+    - SOAP Envelope → Body → `urn:webInjury` → `<Data>...fields...</Data>`
+  - Tip: If you see encoding errors from strict SOAP clients, you can also wrap the inner XML in CDATA for consistency.
+
+Why CDATA?
+- The WSDL says `Data` is an `xsd:string`. Wrapping your XML in CDATA keeps `Data` a string while letting you retain an XML-shaped payload.
+- The mock parses either JSON strings or XML strings inside `Data` and converts them to arrays automatically.
+
+---
+
+## Admin UI
+
+- URL: http://localhost:8080/webservice/admin.php
+- Features:
+  - Filter by operation, search content, and date range
+  - Paginated results with expandable, structured views of payloads and responses
+  - Export CSV of matching results
+
+---
+
+## Troubleshooting
+
+- SOAP-ERROR: Encoding: Violation of encoding rules
+  - Cause: RPC/encoded with `xsd:string` parameter `Data` rejects inline nested XML elements.
+  - Fix: Wrap your inner XML inside CDATA so `Data` remains a string.
+- Empty or 400 responses
+  - The mock validates some required fields and returns `400` codes with a list of missing fields. Check the Admin UI or console for details.
+
+---
+
+## Repository layout
+
+- src/public/webservice/index.php — SOAP endpoint + WSDL + landing page
+- src/public/webservice/admin.php — Admin UI
+- src/Service.php — Mock service implementation and persistence
+- src/wsdl/oneiss.wsdl — WSDL used by SoapServer (copied from source)
+- src/request-samples/*.xml — Ready-to-send SOAP request samples
+- postman/* — Postman collection and environment
+- scripts/* — PowerShell and Bash test scripts
+
+---
+
+## Disclaimer
+
+This is a local mock for development and testing. It is not the official ONEISS system. Do not send real or sensitive patient data to this server.
 
