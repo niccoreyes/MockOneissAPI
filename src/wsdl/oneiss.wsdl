@@ -329,7 +329,7 @@
   <service name="OneissService">
     <documentation>Mock ONEISS SOAP Service - expanded schema</documentation>
     <port name="OneissPort" binding="tns:OneissBinding">
-      <soap:address location="http://localhost:8080/index.php"/>
+      <soap:address location="http://localhost:8080/webservice/index.php"/>
     </port>
   </service>
 </definitions>

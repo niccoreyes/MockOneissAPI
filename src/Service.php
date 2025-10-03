@@ -9,7 +9,11 @@ class Service
         $this->ensureDb();
     }
 
-    // pushInjuryData: full schema validation
+    /**
+     * pushInjuryData
+     * @param array $Data Associative array of fields
+     * @return string XML response
+     */
     public function pushInjuryData($params)
     {
         $data = $this->normalizeData($params);
@@ -32,7 +36,11 @@ class Service
         return $resp;
     }
 
-    // pushApirData: specific schema
+    /**
+     * pushApirData
+     * @param array $Data Associative array of fields
+     * @return string XML response
+     */
     public function pushApirData($params)
     {
         $data = $this->normalizeData($params);
@@ -57,6 +65,11 @@ class Service
         return $resp;
     }
 
+    /**
+     * webInjury
+     * @param array $Data Associative array of fields
+     * @return string XML response
+     */
     public function webInjury($params)
     {
         $data = $this->normalizeData($params);
@@ -101,6 +114,39 @@ class Service
         if (is_object($params) && property_exists($params, 'Data')) {
             $raw = $params->Data;
             if (is_object($raw)) {
+                return $this->objectToArray($raw);
+            }
+            if (is_array($raw)) {
+                return $raw;
+            }
+            if (is_string($raw)) {
+                $trim = trim($raw);
+                $json = json_decode($trim, true);
+                if (json_last_error() === JSON_ERROR_NONE) return $json;
+                if (strpos($trim, '<') !== false) {
+                    try {
+                        $xml = new SimpleXMLElement($trim);
+                        return json_decode(json_encode($xml), true);
+                    } catch (Exception $e) {}
+                }
+                return ['raw' => $raw];
+            }
+        }
+        if (is_object($params)) return $this->objectToArray($params);
+        if (is_array($params)) return $params;
+        return [];
+    }
+
+    private function objectToArray($obj)
+    {
+        $arr = [];
+        foreach ((array)$obj as $k => $v) {
+            $k = preg_replace('/^\w+:/', '', $k);
+            if (is_object($v) || is_array($v)) {
+                $arr[$k] = $this->objectToArray($v);
+            } else {
+                $arr[$k] = $v;
+            }
         }
         return $arr;
     }
@@ -120,7 +166,6 @@ class Service
     {
         $xml = "<SampleData>\n";
         foreach ($data as $k => $v) {
-            // convert nested arrays to JSON string to keep response compact
             if (is_array($v)) {
                 $val = htmlspecialchars(json_encode($v), ENT_XML1 | ENT_COMPAT, 'UTF-8');
             } else {
@@ -134,7 +179,6 @@ class Service
 
     private function escapeTag($tag)
     {
-        // ensure XML element names are safe (replace spaces and invalid chars)
         $tag = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $tag);
         if (preg_match('/^[0-9]/', $tag)) $tag = 'f_' . $tag;
         return $tag;
@@ -149,7 +193,6 @@ class Service
         $xml .= "  <response_datetime>" . htmlspecialchars($dt, ENT_XML1) . "</response_datetime>\n";
         if ($responseValue !== null) {
             $xml .= "  <response_value>\n";
-            // responseValue expected to be XML fragment
             $xml .= $this->indentXml($responseValue, 4);
             $xml .= "  </response_value>\n";
         }

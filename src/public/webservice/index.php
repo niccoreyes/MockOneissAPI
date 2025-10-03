@@ -128,6 +128,7 @@ $apirFields = parseFieldTable($dataFiles[1]);
       <h2>Service endpoints</h2>
       <ul>
         <li>WSDL: <a href="/webservice/index.php?wsdl">/webservice/index.php?wsdl</a></li>
+        <li>Auto-generated WSDL (laminas AutoDiscover): <a href="/webservice/autodiscover.php?wsdl">/webservice/autodiscover.php?wsdl</a></li>
         <li>SOAP endpoint: <code>/webservice/index.php</code> (POST SOAP)</li>
         <li>Records viewer: <a href="/webservice/index.php?view=records">/webservice/index.php?view=records</a></li>
       </ul>

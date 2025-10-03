@@ -1,0 +1,13 @@
+{
+  "name": "niccoreyes/mock-oneiss",
+  "description": "Mock ONEISS SOAP service for local testing",
+  "require": {
+    "php": "^8.0",
+    "laminas/laminas-soap": "^3.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "MockOneiss\\": "src/"
+    }
+  }
+}
