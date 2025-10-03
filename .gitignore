@@ -7,3 +7,7 @@ node_modules/
 /.env
 /*.log
 /src/tmp/
+
+# Logs dumped by scripts
+/logs/*
+/src/data/

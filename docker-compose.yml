@@ -7,9 +7,15 @@ services:
     volumes:
       - ./src:/var/www/html:cached
       - vendor:/var/www/html/vendor
+      - ./logs/apache2:/var/log/apache2:cached
     restart: unless-stopped
     environment:
       - PHP_OPCACHE_VALIDATE_TIMESTAMPS=1
+      - PHP_DISPLAY_ERRORS=1
+      - PHP_DISPLAY_STARTUP_ERRORS=1
+      - PHP_ERROR_REPORTING=E_ALL
+    # Ensure log files exist then start apache and stream logs so docker logs show server errors
+    command: ["bash","-lc","mkdir -p /var/log/apache2 && touch /var/log/apache2/error.log /var/log/apache2/access.log && apache2-foreground & tail -F /var/log/apache2/*.log"]
 
 volumes:
   vendor:

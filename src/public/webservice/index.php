@@ -3,6 +3,25 @@
 // Landing page + WSDL endpoint + SOAP POST handler + records viewer
 
 require __DIR__ . '/../../Service.php';
+// Enable verbose error reporting for debugging inside container
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+// Send PHP errors to Apache error log as well
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/../../data/php_error.log');
+// Convert PHP errors to exceptions to capture stack traces
+set_error_handler(function($severity, $message, $file, $line) {
+    throw new ErrorException($message, 0, $severity, $file, $line);
+});
+set_exception_handler(function($e) {
+    error_log("Uncaught exception: " . $e->getMessage() . "\n" . $e->getTraceAsString());
+    http_response_code(500);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "Internal Server Error - Exception:\n" . $e->getMessage() . "\n\n" . $e->getTraceAsString();
+    exit(1);
+});
+
 $wsdlPath = __DIR__ . '/../../wsdl/oneiss.wsdl';
 $dataFiles = [
     __DIR__ . '/../../../oneissWeb/oneiss-pushInjuryData.txt',
@@ -57,12 +76,41 @@ if ($view === 'records') {
 
 // If POST => treat as SOAP POST to this endpoint
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Capture raw POST early for debugging
+    $rawPost = @file_get_contents('php://input');
+    $dbgDir = __DIR__ . '/../../data'; if (!is_dir($dbgDir)) @mkdir($dbgDir, 0755, true);
+    @file_put_contents($dbgDir . '/last_raw_post.xml', $rawPost);
+
+    // If debug flag set (either GET ?debug=1 or X-Debug: 1 header), return raw POST for inspection
+    $debugMode = (isset($_GET['debug']) && $_GET['debug']) || (isset($_SERVER['HTTP_X_DEBUG']) && $_SERVER['HTTP_X_DEBUG']);
+    if ($debugMode) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "--- RAW POST ---\n";
+        echo $rawPost ?: '(empty)';
+        echo "\n--- END RAW POST ---\n";
+        // also echo server variables for context
+        echo "\n--- SERVER VARS ---\n";
+        foreach (['REQUEST_METHOD','CONTENT_TYPE','HTTP_SOAPACTION','HTTP_USER_AGENT','REQUEST_URI'] as $k) {
+            echo "$k: " . (isset($_SERVER[$k]) ? $_SERVER[$k] : '(none)') . "\n";
+        }
+        exit;
+    }
+
     // Handle SOAP POST using WSDL in wsdlPath (RPC/encoded per official ONEISS WSDL)
     ini_set('soap.wsdl_cache_enabled', '0');
     try {
         $server = new SoapServer($wsdlPath);
         $server->setClass('Service');
-        $server->handle();
+        // Wrap handle with try/catch to capture SoapFaults
+        try {
+            $server->handle();
+        } catch (SoapFault $sf) {
+            // Log and return a readable error
+            error_log("SoapFault: " . $sf->getMessage() . "\n" . $sf->getTraceAsString());
+            header('Content-Type: text/plain; charset=utf-8');
+            http_response_code(500);
+            echo "SOAP Fault: " . $sf->getMessage();
+        }
     } catch (Exception $e) {
         header('Content-Type: text/plain; charset=utf-8');
         http_response_code(500);
@@ -135,6 +183,27 @@ $apirFields = parseFieldTable($dataFiles[1]);
 
       <h3>webInjury</h3>
       <pre><?php echo htmlentities(file_get_contents(__DIR__ . '/../../request-samples/webInjury.xml')); ?></pre>
+
+      <h3>JSON payload examples</h3>
+      <?php
+        $jsonExamplesDir = __DIR__ . '/../../../examples';
+        $exampleApir = $jsonExamplesDir . '/payload_pushApirData.json';
+        $exampleInj = $jsonExamplesDir . '/payload_pushInjuryData.json';
+      ?>
+      <div class="note">You can POST these JSON payloads using the included PowerShell script: <code>/scripts/send-oneiss-soap.ps1</code></div>
+      <h4>pushApirData.json</h4>
+      <?php if (file_exists($exampleApir)): ?>
+        <pre><?php echo htmlentities(file_get_contents($exampleApir)); ?></pre>
+      <?php else: ?>
+        <p>No JSON example found for pushApirData.</p>
+      <?php endif; ?>
+
+      <h4>pushInjuryData.json</h4>
+      <?php if (file_exists($exampleInj)): ?>
+        <pre><?php echo htmlentities(file_get_contents($exampleInj)); ?></pre>
+      <?php else: ?>
+        <p>No JSON example found for pushInjuryData.</p>
+      <?php endif; ?>
     </section>
 
     <section class="card">
