@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="oneiss.doh.gov.ph/webservice/index.php?wsdl">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
   <soapenv:Header/>
   <soapenv:Body>
     <urn:pushInjuryData>
-      <Data><![CDATA[{"Pat_Facility_No":"DOH000000000000877","Status":"E","rstatuscode":"V","date_report":"2016-03-29","time_report":"08:30:00","reg_no":"NM201600100001","tempreg_no":"TN0000000100001","hosp_no":"1065","hosp_reg_no":"1445","hosp_cas_no":"1926","ptype_code":"i","Pat_Last_Name":"Platon","Pat_First_Name":"Jonathan","Pat_Middle_Name":"Elec","Pat_Sex":"M","Pat_Date_of_Birth":"1988-10-06","Pat_Current_Address_Region":"04","Pat_Current_Address_Province":"0434","Pat_Current_Address_City":"043411","Age_Years":"29","pno":"45"}]]></Data>
+      <Data><![CDATA[
+<OneissData>
+  <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
+  <Status>E</Status>
+  <rstatuscode>V</rstatuscode>
+  <date_report>2016-03-29</date_report>
+  <time_report>08:30:00</time_report>
+  <reg_no>NM201600100001</reg_no>
+  <tempreg_no>TN0000000100001</tempreg_no>
+  <hosp_no>1065</hosp_no>
+  <hosp_reg_no>1445</hosp_reg_no>
+  <hosp_cas_no>1926</hosp_cas_no>
+  <ptype_code>i</ptype_code>
+  <Pat_Last_Name>Platon</Pat_Last_Name>
+  <Pat_First_Name>Jonathan</Pat_First_Name>
+  <Pat_Middle_Name>Elec</Pat_Middle_Name>
+  <Pat_Sex>M</Pat_Sex>
+  <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>
+  <Pat_Current_Address_Region>04</Pat_Current_Address_Region>
+  <Pat_Current_Address_Province>0434</Pat_Current_Address_Province>
+  <Pat_Current_Address_City>043411</Pat_Current_Address_City>
+  <Age_Years>29</Age_Years>
+  <pno>45</pno>
+</OneissData>
+      ]]></Data>
     </urn:pushInjuryData>
   </soapenv:Body>
 </soapenv:Envelope>

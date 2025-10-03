@@ -121,44 +121,19 @@ $apirFields = parseFieldTable($dataFiles[1]);
   <div class="container">
     <header>
       <h1>Mock OneISS - Web Service</h1>
-      <div>Path: /webservice/ — This mock now serves the official ONEISS WSDL (RPC/encoded, single string parameter <code>Data</code>).</div>
+      <div>Path: /webservice/ — This mock serves the official ONEISS WSDL but also accepts structured XML inside <code>&lt;Data&gt;</code> for convenience.</div>
       <div class="note">WSDL: <a href="/webservice/index.php?wsdl">/webservice/index.php?wsdl</a> · SOAP endpoint (POST): <code>/webservice/index.php</code> · Records: <a href="/webservice/admin.php">Admin</a></div>
     </header>
 
-    <section class="card">
-      <h2>About the WSDL</h2>
-      <p>The official ONEISS WSDL defines RPC/encoded operations where each method takes a single <code>Data</code> parameter of type <code>xsd:string</code> and returns a string. This mock accepts either:</p>
-      <ul>
-        <li>WSDL-compliant string payloads (e.g., JSON or XML inside <code>Data</code>, often wrapped in CDATA)</li>
-        <li>Convenience structured XML inside <code>&lt;Data&gt;...&lt;/Data&gt;</code> for local testing</li>
-      </ul>
-    </section>
-
     <section class="card" id="samples">
-      <h2>Samples</h2>
-      <h3>WSDL-compliant (string) — pushApirData</h3>
-      <pre><?php echo htmlentities('<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="oneiss.doh.gov.ph/webservice/index.php?wsdl">
-  <soapenv:Header/>
-  <soapenv:Body>
-    <urn:pushApirData>
-      <Data><![CDATA[{"Pat_Facility_No":"DOH000000000000877","reg_no":"NM201600100001","inj_date":"2016-03-30","inj_time":"07:38:02","Pat_Last_Name":"Platon","Pat_First_Name":"Jonathan","Pat_Middle_Name":"Elec","Pat_Sex":"M","Pat_Current_Address_StreetName":"main street","Pat_Current_Address_Region":"04","Pat_Current_Address_Province":"0434","Pat_Current_Address_City":"043411","involve_code":"10","typeof_injurycode":"10","diagnosis":"INGESTION","liquor":"Y","disposition_code":"TRASH"}]]></Data>
-    </urn:pushApirData>
-  </soapenv:Body>
-</soapenv:Envelope>'); ?></pre>
+      <h2>Samples (structured XML)</h2>
+      <h3>pushInjuryData</h3>
+      <pre><?php echo htmlentities(file_get_contents(__DIR__ . '/../../request-samples/pushInjuryData.xml')); ?></pre>
 
-      <h3>WSDL-compliant (string) — pushInjuryData</h3>
-      <pre><?php echo htmlentities('<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="oneiss.doh.gov.ph/webservice/index.php?wsdl">
-  <soapenv:Header/>
-  <soapenv:Body>
-    <urn:pushInjuryData>
-      <Data><![CDATA[{"Pat_Facility_No":"DOH000000000000877","Status":"E","rstatuscode":"V","date_report":"2016-03-29","time_report":"08:30:00","reg_no":"NM201600100001","tempreg_no":"TN0000000100001","hosp_no":"1065","hosp_reg_no":"1445","hosp_cas_no":"1926","ptype_code":"i"}]]></Data>
-    </urn:pushInjuryData>
-  </soapenv:Body>
-</soapenv:Envelope>'); ?></pre>
+      <h3>pushApirData</h3>
+      <pre><?php echo htmlentities(file_get_contents(__DIR__ . '/../../request-samples/pushApirData.xml')); ?></pre>
 
-      <h3>Convenience (structured XML) — webInjury</h3>
+      <h3>webInjury</h3>
       <pre><?php echo htmlentities(file_get_contents(__DIR__ . '/../../request-samples/webInjury.xml')); ?></pre>
     </section>
 
