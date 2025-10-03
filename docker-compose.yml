@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  mock-oneiss:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html:cached
+    restart: unless-stopped
+    environment:
+      - PHP_OPCACHE_VALIDATE_TIMESTAMPS=1

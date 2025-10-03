@@ -1,0 +1,783 @@
+ 
+Online National Electronic Surveillance System
+Web Service
+Date : October 03, 2025View the WSDL for the service. Click on an operation name to view it's details
+  Web Service Menu
+Response Code List
+Methods
+pushInjuryData
+pushApirData
+webInjury
+DataSelect
+WSDL = http://oneiss.doh.gov.ph/webservice/index.php?wsdl
+Response Code List
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Web Service Function List
+pushInjuryData
+Function : pushInjuryData()
+Description :
+This Function can be used to check if the Web Service is alive
+Parameters :
+pushInjuryData($Param)
+#	Key Name	Description	Value [Format/Length]	Required	Reference Table	Reference Value Field	Valid Value
+1	Pat_Facility_No	Facility Name	VARCHAR(60)	Yes			
+2	Status	Status	VARCHAR(1)	Yes			Status if encoded or uploaded
+3	rstatuscode	Data Entry Method	VARCHAR(1)	Yes			Status if Validated or not
+4	date_report	Date of Report	DATE ( YYYY-MM-DD )	Yes			Date Reported (yyyy-mm-dd)
+5	time_report	Time of Report	TIME ( HH:MM:SS)	Yes			Time Reported (00:00:00)
+6	reg_no	Registry Number	VARCHAR(15)	Yes			Registry Number
+7	tempreg_no	Temporary Registry Number	VARCHAR(15)	Yes			Temporary Registry Number
+8	hosp_no	Hospital Patient Id Number	INT	Yes			Hospital Patient ID Number
+9	hosp_reg_no	Hospital Registry Number	VARCHAR(20)	Yes			Hospital Registry Number
+10	hosp_cas_no	Hospital Case Number	VARCHAR(20)	Yes			Hospital Case Number
+11	ptype_code	Type of Patient	VARCHAR(50)	Yes	ref_ptype	ptype_code	Type of Patient - Use the type code that came in the reference table(rtype) Note: View the reference table (rtype) to view patient's type code's descriptions
+12	Pat_Last_Name	Patient Last Name	VARCHAR(60)	No			Patient's Family Name (e.g. Dela Cruz)
+13	Pat_First_Name	Patient First Name	VARCHAR(60)	No			Patient's Given Name (e.g. Juan)
+14	Pat_Middle_Name	Patient Middle Name		No			Patient's Middle Name (e.g. Bautista)
+15	Pat_Sex	Sex	VARCHAR(1)	No	ref_sex	sex_code	Patient's Sex - Use the sex code that came in the reference table(ref_sex) (e.g. M) Note: Check the reference table (ref_sex) to view sex codes and descriptions
+16	Pat_Date_of_Birth	Patient Date of Birth		No			Date of Birth (yyyy-mm-dd)
+17	Pat_Current_Address_Region	Permanent Address - Region	VARCHAR(60)	No	ref_region	regcode	Patient's Permanent Address(Region) - Use the region code that came in reference table(rregion) (e.g. 13) Note: Check the reference table(rregion) to view region code's descriptions & only integer is accepted in this field
+18	Pat_Current_Address_Province	Permanent Address - Province		No	ref_prov	provcode	Patient's Permanent Address(Province) - Use the province code that came in reference table(rprov) (e.g. 1376) Note: Check the reference table(rprov) to view province code's descriptions & only integer is accepted in this field
+19	Pat_Current_Address_City	Permanent Address - City/Municipality		No	ref_citymun	citycode	Patient's Permanent Address(City) - Use the city code that came in reference table(rcitymun) (e.g. 137605) Note: Check the reference table(rcitymun) to view city code's descriptions & only integer is accepted in this field
+20	temp_regcode	Temporary Address - Region		No	ref_region	regcode	Patient's Temporary Address(Region) - Use the region code that came in reference table(rregion) (e.g. 13) Note: Check the reference table(rregion) to view region code's descriptions & only integer is accepted in this field
+21	temp_provcode	Temporary Address - Province		No	ref_prov	provcode	Patient's Temporary Address(Province) - Use the province code that came in reference table(rprov) (e.g. 1376) Note: Check the reference table(rprov) to view province code's descriptions & only integer is accepted in this field
+22	temp_citycode	Temporary Address - City/Municiplality		No	ref_citymun	citycode	Patient's Temporary Address(City) - Use the city code that came in reference table(rcitymun) (e.g. 137605) Note: Check the reference table(rcitymun) to view city code's descriptions & only integer is accepted in this field
+23	Age_Years	If Date of Birth is not Available - Years		No			Patient's Age in Years if Date of Birth is not given
+24	Age_Month	If Date of Birth is not Available - Mos		No			Patient's Age in Months if Date of Birth is not given
+25	Age_Day	If Date of Birth is not Available - Days		No			Patient's Age in Days if Date of Birth is not given
+26	Pat_Phil_Health_No	PhilHealth Number		No			Patient's Philhealth Number
+27	plc_regcode	Place of Injury - Region	VARCHAR(2)	No	ref_region	regcode	Patient's Place of Injury Region - Use the region code that came in reference table(rregion) (e.g. 13) Note: Check the reference table(rregion) to view region code's descriptions & only integer is accepted in this field
+28	plc_provcode	Place of Injury - Province	VARCHAR(4)	No	ref_prov	provcode	Patient's Place of Injury Province - Use the province code that came in reference table(rprov) (e.g. 1376) Note: Check the reference table(rprov) to view province code's descriptions & only integer is accepted in this field
+29	plc_ctycode	Place of Injury - City/Municipality	VARCHAR(6)	No	ref_citymun	citycode	Patient's Place of Injury City - Use the city code that came in reference table(rcitymun) (e.g. 137605) Note: Check the reference table(rcitymun) to view city code's descriptions & only integer is accepted in this field
+30	inj_date	Date of Injury	DATE ( YYYY-MM-DD )	No			Patient's Date of Injury (yyyy-mm-dd 00:00:00)
+31	inj_time	Time of Injury (24 Hour Format)	TIME ( HH:MM:SS)	No			Patient's Time of Injury (00:00:00)
+32	Encounter_Date	Date of Consultation (mm/dd/yyyy)	DATE ( YYYY-MM-DD )	No			Patient's Date of Consultation (yyyy-mm-dd 00:00:00)
+33	Encounter_Time	Time of Consultation (24 Hour Format)	TIME ( HH:MM:SS)	No			Patient's Time of Consultation (00:00:00)
+34	inj_intent_code	Injury Intent	VARCHAR(2)	No	ref_inj_intent	inj_intent_code	Patient's Injury Intent - Use the injury intent code that came in reference table(ref_inj_intent) (e.g. 1) Note: Check the reference table(ref_inj_intent) to view injury intent code's description
+35	first_aid_code	First Aid Given	VARCHAR(2)	No	ref_first_aid	first_aid_code	First Aid Given to Patient - Use the first aid code that came in reference table(ref_first_aid) Note: Check the reference table(ref_first_aid) to view first aid code's description
+36	firstaid_others	First Aid Given - What	VARCHAR(100)	No			If First Aid Given is not available in the list of first aid code in reference table(ref_first_aid)
+37	firstaid_others2	First Aid Given - By Whom	VARCHAR(100)	No			Person who gave First Aid to Patient
+38	mult_inj	With Multiple Injuries	VARCHAR(2)	No	ref_yes_no	yes_no_code	If the patient has multiple injuries or none, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+39	noi_abrasion	Nature of Injury - Abrasion	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is abrasion, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+40	noi_abradtl	Nature of Injury - Abrasion Details	TEXT	No			You can insert text in this field
+41	noi_avulsion	Nature of Injury - Avulsion	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is avulsion, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+42	noi_avuldtl	Nature of Injury - Avulsion Details	TEXT	No			You can insert text in this field
+43	noi_burn_r	Nature of Injury - Burn	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is burn, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+44	noi_burn1	Degree of Burn - 1st		No	ref_yes_no	yes_no_code	If the patient's nature of injury is a first degree burn, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+45	noi_burn2	Degree of Burn - 2nd		No	ref_yes_no	yes_no_code	If the patient's nature of injury is a second degree burn, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+46	noi_burn3	Degree of Burn - 3rd		No	ref_yes_no	yes_no_code	If the patient's nature of injury is a third degree burn, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+47	noi_burn4	Degree of Burn - 4th		No	ref_yes_no	yes_no_code	If the patient's nature of injury is a fourth degree burn, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+48	noi_burndtl	Nature of Injury - Burn Site (Extent of Body Surface involved)	TEXT	No			You can insert text in this field
+49	noi_concussion	Nature of Injury - Concussion	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is a Concussion, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+50	noi_concussiondtl	Nature of Injury - Concussion Details	TEXT	No			You can insert text in this field
+51	noi_contusion	Nature of Injury - Contusion	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is a Contusion, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+52	noi_contudtl	Nature of Injury - Contusion Details	TEXT	No			You can insert text in this field
+53	noi_frac_clo	Nature of Injury - Fracture Closed Type	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is a Fracture Closed Type, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+54	noi_frcldtl	Nature of Injury - Fracture Closed Type Details	TEXT	No			You can insert text in this field
+55	noi_frac_ope	Nature of Injury - Fracture Open Type	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is a Fracture Open Type, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+56	noi_fropdtl	Nature of Injury - Fracture Open Type Details	TEXT	No			You can insert text in this field
+57	noi_owound	Nature of Injury - Open Wound/Laceration	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is a Open Wound/Laceration, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+58	noi_owoudtl	Nature of Injury - Open Wound/Laceration Details	TEXT	No			You can insert text in this field
+59	noi_amp	Nature of Injury - Traumatic Amputation	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is a Traumatic Amputation, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+60	noi_ampdtl	Nature of Injury - Traumatic Amputation Details	TEXT	No			You can insert text in this field
+61	noi_others	Nature of Injury - Others	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's nature of injury is Others, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+62	noi_otherinj	Nature of Injury - Others, Pls. specify injury, body parts affected	TEXT	No			You can insert text in this field
+63	ext_bite	External Cause - Bite/Stings	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is a Bite/Stings, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+64	ext_bite_sp	External Cause - Bite/Stings, Specify animal/insect	VARCHAR(255)	No			If the patient's external cause is a Bite/Stings, Specify animal/insect, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+65	ext_burn_r	External Cause - Burns	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is a Burns, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+66	ref_burn_code	External Cause - Burns (Details)	VARCHAR(2)	No	ref_burns	code	Use burn code that came in reference table(rburns) Note: Check the reference table(rburns) to view burn code's descriptions
+67	ext_burn_sp	External Cause - Burns, Others specify	VARCHAR(255)	No			You can insert text in this field
+68	ext_chem	External Cause - Chemical Substance	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is a Chemical Substance, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+69	ext_chem_sp	External Cause - Chemical Substance, specify	VARCHAR(255)	No			You can insert text in this field
+70	ext_sharp	External Cause - Contact with sharp objects	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is Contact with sharp objects, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+71	ext_sharp_sp	External Cause - Contact with sharp objects, Specify object	VARCHAR(255)	No			You can insert text in this field
+72	ext_drown_r	External Cause - Drowning	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is Drowning, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+73	ref_drowning_cope	External Cause - Drowning (Details)	VARCHAR(2)	No	ref_drowning	code	Use drowning code that came in reference table(rdrowning) Note: Check the reference table(rdrowning) to view drowning code's descriptions
+74	ext_drown_sp	External Cause - Drowning, Others specify	VARCHAR(255)	No			You can insert text in this field
+75	ext_expo_nature_r	External Cause - Exposure to Forces of Nature	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is Exposure to Forces of Nature, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+76	ref_expnature_code	External Cause - Exposure to Forces of Nature (Details)	VARCHAR(2)	No	ref_expnature	code	Use exposure of forces of nature code that came in reference table(rexpnature) Note: Check the reference table(rexpnature) to view exposure of forces of nature code's descriptions
+77	ext_expo_nature_sp	External Cause - Exposure to Forces of Nature, Others specify	VARCHAR(255)	No			You can insert text in this field
+78	ext_fall	External Cause - Fall	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is Fall, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+79	ext_falldtl	External Cause - Fall, details	VARCHAR(255)	No			You can insert text in this field
+80	ext_firecracker_r	External Cause - Firecracker	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is a Firecracker, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+81	firecracker_code	External Cause - Firecracker (Details)	VARCHAR(2)	No	ref_firecracker	firecracker_code	Use Firecracker (Details) code that came in reference table(rfirecracker) Note: Check the reference table(rfirecracker) to view Firecracker (Details) code's descriptions
+82	ext_firecracker_sp	External Cause - Firecracker, Others specify	VARCHAR(255)	No			You can insert text in this field
+83	ext_sexual	External Cause - Sexual Assault/ Sexual Abuse/ Rape (Alleged)	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is Sexual Assault/ Sexual Abuse/ Rape (Alleged), this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+84	ext_gun	External Cause - Gunshot	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is a Gunshot, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+85	ext_gun_sp	External Cause - Gunshot, Specify weapon	VARCHAR(255)	No			You can insert text in this field
+86	ext_hang	External Cause - Hanging/Strangulation	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is a Hanging/Strangulation, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+87	ext_maul	External Cause - Mauling/Assault	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is a Mauling/Assault, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+88	ext_transport	External Cause - Transport/Vehicular Accident	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is aTransport/Vehicular Accident, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+89	ext_other	External Cause - Others	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is Others, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+90	ext_other_sp	External Cause - Others, specify	VARCHAR(255)	No			You can insert text in this field
+91	vehicle_type_id	Vehicles Type (Land, Water, Air)	VARCHAR(50)	No	ref_veh_type	vehicle_type_id	Use Vehicles Type (Land, Water, Air) code that came in reference table(rveh_type) Note: Check the reference table(rveh_type) to view Vehicles Type (Land, Water, Air) code's descriptions
+92	ref_veh_acctype_code	Transport/Vehicular Accident - Collision/Non-Collision	VARCHAR(2)	No	ref_veh_acctype	type_code	Use Transport/Vehicular Accident - Collision/Non-Collision code that came in reference table(rveh_acctype) Note: Check the reference table(rveh_acctype) to view Transport/Vehicular Accident - Collision/Non-Collision code's descriptions
+93	vehicle_code	Vehicles Involved - Patient's Vehicle	VARCHAR(2)	No	ref_vehicle	vehicle_code	Use Vehicles Involved - Patient's Vehicle code that came in reference table(rvehicle) Note: Check the reference table(rvehicle) to viewVehicles Involved - Patient's Vehicle code's descriptions
+94	pat_veh_sp	Patient's Vehicle, Others specify	VARCHAR(255)	No			You can insert text in this field
+95	etc_veh	Vehicles Involved - Other Vehicle/Object Involved	VARCHAR(2)	No	ref_vehicle	vehicle_code	Use Vehicles Involved - Other Vehicle/Object Involved code that came in reference table(rvehicle) Note: Check the reference table(rvehicle) to viewVehicles Involved - Other Vehicle/Object Involved code's descriptions
+96	etc_veh_sp	Other Vehicle/Object Involved, Others specify	VARCHAR(255)	No			You can insert text in this field
+97	position_code	Transport/Vehicular Accident - Position of Patient	VARCHAR(2)	No	ref_pat_position	position_code	Use Transport/Vehicular Accident - Position of Patient code that came in reference table(rpat_position) Note: Check the reference table(rpat_position) to view Transport/Vehicular Accident - Position of Patient code's descriptions
+98	pos_pat_sp	Position of patient, Others specify	VARCHAR(255)	No			You can insert text in this field
+99	place_occ_code	Place of Occurrence	VARCHAR(2)	No	ref_place_occ	place_occ_code	Use Place of Occurrence code that came in reference table(rplace_occ) Note: Check the reference table(rplace_occ) to view Place of Occurrence code's descriptions
+100	poc_wp_spec	Place of Occurence - Workplace, specify	VARCHAR(255)	No			You can insert text in this field
+101	poc_etc_spec	Place of Occurence - Others, specify	VARCHAR(255)	No			You can insert text in this field
+102	activity_code	Activity of the Patient at the time of incident	VARCHAR(2)	No	ractivity	activity_code	Use Activity of the Patient at the time of incident code that came in reference table(ractivity) Note: Check the reference table(ractivity) to view Activity of the Patient at the time of incident code's descriptions
+103	act_etc_spec	Activity of the Patient at the time of incident - Others, specify	VARCHAR(255)	No			You can insert text in this field
+104	risk_none	Risk Factor - None	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Risk factor is None, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+105	risk_alcliq	Risk Factor - Alcohol/Liquor	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Risk factor is Alcohol/Liquor, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+106	risk_sleep	Risk Factor - Sleepy	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Risk factor is Sleepy, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+107	risk_smoke	Risk Factor - Smoking	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Risk factor is Smoking, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+108	risk_mobpho	Risk Factor - Using Mobile	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Risk factor is Using Mobile, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+109	risk_other	Risk Factor - Others	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Risk factor is Others, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+110	risk_etc_spec	Risk Factor - Others, specify	VARCHAR(255)	No			You can insert text in this field
+111	safe_none	Safety - None	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is None, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+112	safe_airbag	Safety - Airbag	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is Airbag, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+113	safe_helmet	Safety - Helmet	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is Helmet, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+114	safe_cseat	Safety - Childseat	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is Childseat, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+115	safe_sbelt	Safety - Seatbelt	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is Seatbelt, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+116	safe_unkn	Safety - Unknown	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is Unknown, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+117	safe_drown	Safety - Life vest/Lifejacket/Floatation device (for drowning)	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is Life vest/Lifejacket/Floatation device (for drowning), this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+118	safe_other	Safety - Others	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's Safety is Others, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+119	safe_other_sp	Safety - Others, specify	VARCHAR(255)	No			You can insert text in this field
+120	trans_ref	ER/OPD/BHS/RHU - Transferred from another hospital/facility	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is aTransport/Vehicular Accident, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+121	trans_ref2	Referred by another Hospital/Facility for Laboratory and/or other medical purposes	VARCHAR(1)	No	ref_yes_no	yes_no_code	If the patient's external cause is aTransport/Vehicular Accident, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+122	ref_hosp_code	ER/OPD/BHS/RHU - Name of Originating Hospital	VARCHAR(19)	No	ref_facilities	hfhudcode	Standard code given by the NHFR
+123	ref_hosp_code_sp	Name of Originating Hospital - Others, Specify	VARCHAR(30)	No			If the patient has no safety, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+124	ref_physician	ER/OPD/BHS/RHU - Name of Originating Physician	VARCHAR(255)	No			If the patient has safety through means of an airbag, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+125	status_code	Status Upon Reaching Hospital	VARCHAR(2)	No	ref_statushosp	status_code	Use Status Upon Reaching Hospital code that came in reference table(rstatushosp) Note: Check the reference table(rstatushosp) to view Status Upon Reaching Hospital code's descriptions
+126	mode_transport_code	Mode of Transport to the Hospital/Facility		No	ref_mode_transport	code	Use Mode of Transport to the Hospital/Facility code that came in reference table(rmode_transport) Note: Check the reference table(rmode_transport) to view Mode of Transport to the Hospital/Facility code's descriptions
+127	stat_reachdtl	Mode of Transport to the Hospital/Facility - Others, specify	VARCHAR(255)	No			If the patient has safety through means of a seatbelt, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+128	Diagnosis	Initial Impression	LONGTEXT	No			If the patient has an unknown safety, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+129	icd_10_nature_er	ICD-10 Code - Nature of Injury	VARCHAR(40)	No			If the patient has safety for drowning, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+130	icd_10_external_er	ICD-10 Code - External Cause of Injury	VARCHAR(40)	No			If the patient has other safety measures, this field can be answered by Y/N. Note: Check the reference table(ref_yes_no) to view Y/N code's description
+131	disposition_code	Disposition	VARCHAR(5)	No	ref_disposition	disposition_code	Use Disposition code that came in reference table(rdisposition) Note: Check the reference table(rdisposition) to view Disposition code's descriptions
+132	disp_er_sp	ER Disposition Transferred - Specify	VARCHAR(100)	No	ref_facilities	hfhudcode	Standard code given by the NHFR
+133	disp_er_sp_oth	Name of Hospital - Others, Specify	VARCHAR(100)	No			You can insert text in this field
+134	outcome_code	Outcome	VARCHAR(2)	No	ref_outcome	outcome_code	Use Outcome code that came in reference table(routcome) Note: Check the reference table(routcome) to view Outcome code's descriptions
+135	complete_diagnosis	IN-PATIENT (for admitted hospital case only) - Complete Final Diagnosis	TEXT	No			Patient's Status upon reaching hospital/facility. Use status code that came in reference table(rstatushosp). Note: Check the reference table(rstatushosp) to view status code's description
+136	disp_inpat	IN-PATIENT (for admitted hospital case only) - Disposition	VARCHAR(5)	No	ref_disposition	disposition_code	Use IN-PATIENT (for admitted hospital case only) - Disposition code that came in reference table(rdisposition) Note: Check the reference table(rdisposition) to view IN-PATIENT (for admitted hospital case only) - Disposition code's descriptions
+137	disp_inpat_oth	Name of Originating Hospital	VARCHAR(100)	No	ref_facilities	hfhudcode	Standard code given by the NHFR
+138	disp_inpat_sp	Name of Originating Hospital - Others, Specify	VARCHAR(100)	No			You can insert text in this field
+139	disp_inpat_sp2	IN-PATIENT Disposition - Others, Specify	VARCHAR(100)	No			You can insert text in this field
+140	outcome_inpat	IN-PATIENT (for admitted hospital case only) - Outcome	VARCHAR(2)	No	routcome	outcome_code	IN-PATIENT (for admitted hospital case only) - Outcome, You can insert text in this field
+141	icd10_nature_inpatient	IN-PATIENT (for admitted hospital case only) - ICD-10 Code: Nature of Injury	VARCHAR(40)	No			IN-PATIENT (for admitted hospital case only) - ICD-10 Code: Nature of Injury, You can insert text in this field
+142	icd_10_ext_inpatient	IN-PATIENT (for admitted hospital case only) - ICD-10 Code: External Cause of Injury	VARCHAR(40)	No			IN-PATIENT (for admitted hospital case only) - ICD-10 Code: External Cause of Injury, You can insert text in this field
+143	comments	Comments	VARCHAR(255)	No			Comments
+144	fac_regno	Uploading Facility No.	VARCHAR(30)	No			Uploading Facility No.
+145	upload	Upload	VARCHAR(15)	No			Upload
+146	class	Class	VARCHAR(6)	No			Class
+147	pre_date	Date Completed	DATE ( YYYY-MM-DD )	No			Data Completed
+148	pno	PNO	INT	No			Number
+Data Array Form
+$parameter=array("Data"=> array(
+'Pat_Facility_No' => 'DOH000000000000877',
+'Status' => 'E',
+'rstatuscode' => 'V',
+'date_report' => '2016-03-29',
+'time_report' => '08:30:00',
+'reg_no' => 'NM201600100001',
+'tempreg_no' => 'TN0000000100001',
+'hosp_no' => '1065',
+'hosp_reg_no' => '',
+'hosp_cas_no' => '',
+'ptype_code' => 'i',
+'Pat_Last_Name' => 'Platon',
+'Pat_First_Name' => 'Jonathan',
+'Pat_Middle_Name' => 'Elec',
+'Pat_Sex' => 'M',
+'Pat_Date_of_Birth ' => '1988-10-06',
+'Pat_Current_Address_Region' => '04',
+'Pat_Current_Address_Province ' => '0434',
+'Pat_Current_Address_City ' => '043411',
+'temp_regcode' => '04',
+'temp_provcode' => '0434',
+'temp_citycode' => '043411',
+'Age_Years' => '23',
+'Age_Month' => '11',
+'Age_Day' => '5',
+'Pat_Phil_Health_No' => '20263849249',
+'plc_regcode' => '04',
+'plc_provcode' => '0434',
+'plc_ctycode' => '043411',
+'inj_date' => '2016-03-30 00:00:00',
+'inj_time' => '07:38:02',
+'Encounter_Date' => '2016-03-30 00:00:00',
+'Encounter_Time' => '08:27:25',
+'inj_intent_code' => '1',
+'first_aid_code' => 'N',
+'firstaid_others' => '',
+'firstaid_others2' => '',
+'mult_inj' => 'N',
+'noi_abrasion' => 'N',
+'noi_abradtl' => '',
+'noi_avulsion' => 'N',
+'noi_avuldtl' => '0',
+'noi_burn_r' => 'N',
+'noi_burn1' => 'N',
+'noi_burn2' => 'N',
+'noi_burn3' => 'N',
+'noi_burn4' => 'N',
+'noi_burndtl' => '',
+'noi_concussion' => 'N',
+'noi_concussiondtl' => '',
+'noi_contusion' => 'N',
+'noi_contudtl' => '',
+'noi_frac_clo' => 'N',
+'noi_frcldtl' => '',
+'noi_frac_ope' => 'N',
+'noi_fropdtl' => '',
+'noi_owound' => 'N',
+'noi_owoudtl' => '',
+'noi_amp' => 'N',
+'noi_ampdtl' => '',
+'noi_others' => 'N',
+'noi_otherinj' => '',
+'ext_bite' => 'N',
+'ext_bite_sp' => '',
+'ext_burn_r' => 'N',
+'ref_burn_code' => '',
+'ext_burn_sp' => '',
+'ext_chem' => 'N',
+'ext_chem_sp' => '',
+'ext_sharp' => 'N',
+'ext_sharp_sp' => '',
+'ext_drown_r' => 'N',
+'ref_drowning_cope' => '',
+'ext_drown_sp' => '',
+'ext_expo_nature_r' => 'N',
+'ref_expnature_code' => '',
+'ext_expo_nature_sp' => '',
+'ext_fall' => 'N',
+'ext_falldtl' => '',
+'ext_firecracker_r' => 'N',
+'firecracker_code' => '',
+'ext_firecracker_sp' => '',
+'ext_sexual' => 'N',
+'ext_gun' => 'Y',
+'ext_gun_sp' => 'MAGNUM 357 PISTOL',
+'ext_hang' => 'N',
+'ext_maul' => 'N',
+'ext_transport' => 'N',
+'ext_other' => 'N',
+'ext_other_sp' => '',
+'vehicle_type_id' => 'NULL ',
+'ref_veh_acctype_code' => '',
+'vehicle_code' => '',
+'pat_veh_sp' => '',
+'etc_veh' => '',
+'etc_veh_sp' => '',
+'position_code' => '',
+'pos_pat_sp' => '',
+'place_occ_code' => '50',
+'poc_wp_spec' => '',
+'poc_etc_spec' => '',
+'activity_code' => '10',
+'act_etc_spec' => 'act_etc_spec',
+'risk_none' => 'Y',
+'risk_alcliq' => 'N',
+'risk_sleep' => 'N',
+'risk_smoke' => 'N',
+'risk_mobpho' => 'N',
+'risk_other' => 'N',
+'risk_etc_spec' => '',
+'safe_none' => 'Y',
+'safe_airbag' => 'N',
+'safe_helmet' => 'Y',
+'safe_cseat' => 'N',
+'safe_sbelt' => 'N',
+'safe_unkn' => 'N',
+'safe_drown' => 'N',
+'safe_other' => 'N',
+'safe_other_sp' => '',
+'trans_ref' => 'N',
+'trans_ref2' => 'N',
+'ref_hosp_code' => '',
+'ref_hosp_code_sp' => '',
+'ref_physician' => '',
+'status_code' => '2',
+'mode_transport_code' => '3',
+'stat_reachdtl' => '',
+'Diagnosis' => 'GUN SHOT WOUND, POINT OF ENTRY SHOULDER, POINT OF EXIT BACK ',
+'icd_10_nature_er' => '',
+'icd_10_external_er' => '',
+'disposition_code' => 'TRASH',
+'disp_er_sp' => '',
+'disp_er_sp_oth' => '',
+'outcome_code' => '10',
+'complete_diagnosis' => '',
+'disp_inpat' => '',
+'disp_inpat_oth' => '',
+'disp_inpat_sp' => '',
+'disp_inpat_sp2' => '',
+'outcome_inpat' => '',
+'icd10_nature_inpatient' => '',
+'icd_10_ext_inpatient' => '',
+'comments' => '',
+'fac_regno' => '',
+'upload' => '',
+'class' => '',
+'pre_date' => '',
+'pno' => '45',
+)
+);
+Return Value : RAW XML Format
+XML Tags	Description
+response_code	Contains Response Code
+response_desc	Contains Response Description
+response_datetime	Server Response Date and Time
+response_value	Contains Function Return Value. it can be a string value or array value
+Code	Description
+100	Web Service is UP
+101	Web Service is under Maintenance
+104	Success
+XML Format
+Sample Raw XML Response for WS_Check
+<oneiss>
+   <response_code>100</response_code>
+   <response_desc>Web Service is UP</response_desc>
+   <response_datetime>June 15, 2013 1:43 AM</response_datetime>
+</oneiss>
+
+Sample Raw XML Response for array value
+<oneiss>
+   <response_code>104</response_code>
+   <response_desc>Success</response_desc>
+   <response_datetime>June 15, 2013 1:43 AM</response_datetime>
+   <response_value>
+        <SampleData>
+             <lastname>Dela Cruz</lastname>
+             <firstname>Juanna</firstname>
+             <middlename>Damulag</middlename>
+        </SampleData>
+   </response_value>
+</oneiss>
+Sample Usage :
+/* initialize the soapclient class */
+$server = new SoapClient('http://oneiss.doh.gov.ph/webservice/index.php?wsdl');
+/* Set the parameters */
+$param =array("Data"=> array(
+'Pat_Last_Name' => 'Platon',
+'Pat_First_Name' => 'Jonathan Joel',
+'Pat_Middle_Name' => 'Elec',
+'Pat_Date_of_Birth' => '1988-10-06 ',
+'Pat_Facility_No' => 'DOH000000000000877',
+'date_report' => '2018-03-29',
+'time_report' => '08:30:00',
+'tempreg_no' => 'TN0000000100001',
+'hosp_no' => '1065',
+'hosp_reg_no' => '1445',
+'hosp_cas_no' => '1926',
+'ptype_code' => 'i',
+'Pat_Sex' => 'M',
+'Pat_Current_Address_Region' => '04',
+'Pat_Current_Address_Province' => '0434',
+'Pat_Current_Address_City' => '043411',
+'temp_regcode' => '04',
+'temp_provcode' => '0434',
+'temp_citycode' => '043411',
+'Age_Years' => '29',
+'Age_Months' => 'NULL',
+'Age_Days' => 'NULL',
+'Pat_Phil_Health_No' => '20263849249',
+'plc_regcode' => '04',
+'plc_provcode' => '0434',
+'plc_ctycode' => '043411',
+'inj_date' => '2016-03-30',
+'inj_time' => '07:38:02',
+'Encounter_Date' => '2016-03-30',
+'Encounter_Time' => '08:27:25',
+'inj_intent_code' => '1',
+'first_aid_code' => 'N',
+'firstaid_others' => 'NULL',
+'firstaid_others2' => 'NULL',
+'mult_inj' => 'N',
+'noi_abrasion' => 'N',
+'noi_abradtl' => 'NULL',
+'noi_avulsion' => 'N',
+'noi_avuldtl' => 'NULL',
+'noi_burn_r' => 'N',
+'noi_burn1' => 'N',
+'noi_burn2' => 'N',
+'noi_burn3' => 'N',
+'noi_burn4' => 'N',
+'noi_burndtl' => 'NULL',
+'noi_concussion' => 'N',
+'noi_concussiondtl' => 'NULL',
+'noi_contusion' => 'N',
+'noi_contudtl' => 'NULL',
+'noi_frac_clo' => 'N',
+'noi_frcldtl' => 'NULL',
+'noi_frac_ope' => 'N',
+'noi_fropdtl' => 'NULL',
+'noi_owound' => 'N',
+'noi_owoudtl' => 'NULL',
+'noi_amp' => 'N',
+'noi_ampdtl' => 'NULL',
+'noi_others' => 'N',
+'noi_otherinj' => 'NULL',
+'ext_bite' => 'N',
+'ext_bite_sp' => 'NULL',
+'ext_burn_r' => 'N',
+'ref_burn_code' => '00',
+'ext_burn_sp' => 'NULL',
+'ext_chem' => 'N',
+'ext_chem_sp' => 'NULL',
+'ext_sharp' => 'N',
+'ext_sharp_sp' => 'NULL',
+'ext_drown_r' => 'N',
+'ref_drowning_cope' => '00',
+'ext_drown_sp' => 'NULL',
+'ext_expo_nature_r' => 'N',
+'ref_expnature_code' => '00',
+'ext_expo_nature_sp' => 'NULL',
+'ext_fall' => 'N',
+'ext_fall_prep' => 'N',
+'ext_falldtl' => 'NULL',
+'ext_firecracker_r' => 'N',
+'firecracker_code' => '00',
+'ext_firecracker_sp' => 'NULL',
+'ext_sexual' => 'N',
+'ext_gun' => 'Y',
+'ext_gun_sp' => 'MAGNUM 357 PISTOL',
+'ext_hang' => 'N',
+'ext_maul' => 'N',
+'ext_transport' => 'N',
+'ext_other' => 'N',
+'ext_other_sp' => 'NULL',
+'pat_veh_type' => 'NULL ',
+'type_code' => '00',
+'severity' => '00',
+'pat_veh' => '00',
+'pat_veh_sp' => 'NULL',
+'etc_veh' => '00',
+'etc_veh_sp' => 'NULL',
+'position_code' => '00',
+'pos_pat_sp' => 'NULL',
+'place_occ_code' => '50',
+'poc_wp_spec' => 'NULL',
+'poc_etc_spec' => 'NULL',
+'activity_code' => '10',
+'act_etc_spec' => 'act_etc_spec',
+'risk_none' => 'Y',
+'risk_alcliq' => 'N',
+'risk_drugs' => 'N',
+'risk_sleep' => 'N',
+'risk_smoke' => 'N',
+'risk_mobpho' => 'N',
+'risk_other' => 'N',
+'risk_etc_spec' => 'NULL',
+'safe_none' => 'Y',
+'safe_airbag' => 'N',
+'safe_helmet' => 'Y',
+'safe_cseat' => 'N',
+'safe_sbelt' => 'N',
+'safe_unkn' => 'N',
+'safe_drown' => 'N',
+'safe_other' => 'N',
+'safe_other_sp' => 'NULL',
+'trans_ref' => 'N',
+'trans_ref2' => 'N',
+'ref_hosp_code' => 'NULL',
+'ref_hosp_code_sp' => 'NULL',
+'ref_physician' => 'NULL',
+'status_code' => '2',
+'mode_transport_code' => '3',
+'stat_reachdtl' => 'NULL',
+'Diagnosis' => 'GUN SHOT WOUND,
+POINT OF ENTRY SHOULDER,
+POINT OF EXIT BACK ',
+'icd_10_nature_er' => 'NULL',
+'icd_10_external_er' => 'NULL',
+'disp_er' => 'TRASH',
+'disp_er_sp' => 'NULL',
+'disp_er_sp_oth' => 'NULL',
+'outcome_er' => '10',
+'complete_diagnosis' => 'NULL',
+'disp_inpat' => 'NULL',
+'disp_inpat_oth' => 'NULL',
+'disp_inpat_sp' => 'NULL',
+'disp_inpat_sp2' => 'NULL',
+'outcome_inpat' => '00',
+'icd10_nature_inpatient' => 'NULL',
+'icd_10_ext_inpatient' => 'NULL',
+'comments' => 'NULL',
+'fac_regno' => 'NULL',
+'upload' => 'NULL',
+'class' => 'NULL',
+'pre_date' => '2016-03-30',
+)
+);
+/* call the function */
+$check = $server->pushInjuryData($param);
+pushApirData
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+webInjury
+
+
+
+
+
+
+
+
+DataSelect
+Online National Electronic Surveillance System
+All Rights Reserved 2025

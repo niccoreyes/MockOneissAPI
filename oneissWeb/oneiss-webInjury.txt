@@ -1,0 +1,782 @@
+ 
+Online National Electronic Surveillance System
+Web Service
+Date : October 03, 2025View the WSDL for the service. Click on an operation name to view it's details
+  Web Service Menu
+Response Code List
+Methods
+pushInjuryData
+pushApirData
+webInjury
+DataSelect
+WSDL = http://oneiss.doh.gov.ph/webservice/index.php?wsdl
+Response Code List
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Web Service Function List
+pushInjuryData
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pushApirData
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+webInjury
+Function : webInjury()
+Description :
+This Function can be used to check if the Web Service is alive
+Parameters :
+Pat_Facility_No	Facility Name
+Pat_Last_Name	Name of Patient - Last Name
+Pat_First_Name	Name of Patient - First Name
+Pat_Middle_Name	Name of Patient - Middle Name
+Pat_Date_of_Birth	Birth Date
+status	Status
+rstatuscode	Data Entry Method
+date_report	Date of Report
+time_report	Time of Report
+reg_no	Hospital Registry No.
+tempreg_no	Temporary Registry Number
+hosp_no	Hospital Patient Id No.
+hosp_reg_no	Hospital Registry No.
+hosp_cas_no	Hospital Case No.
+ptype_code	Type of Patient
+Pat_Sex	Sex
+Pat_Current_Address_Region	Permanent Address - Region
+Pat_Current_Address_Province	Permanent Address - Province
+Pat_Current_Address_City	Permanent Address - City/Municipality
+temp_regcode	Temporary Address - Region
+temp_provcode	Temporary Address - Province
+temp_citycode	Temporary Address - City/Municiplality
+Age_Years	If Date of Birth is not Available - Years
+Age_Months	If Date of Birth is not Available - Mos
+Age_Days	If Date of Birth is not Available - Days
+Pat_Phil_Health_No	PhilHealth Number
+plc_regcode	Place of Injury - Region
+plc_provcode	Place of Injury - Province
+plc_ctycode	Place of Injury - City/Municipality
+inj_date	Date of Injury (mm/dd/yyyy)
+inj_time	Time of Injury (24 Hour Format)
+Encounter_Date	Date of Consultation (mm/dd/yyyy)
+Encounter_Time	Time of Consultation (24 Hour Format)
+inj_intent_code	Injury Intent
+first_aid_code	First Aid Given
+firstaid_others	First Aid Given - What
+firstaid_others2	First Aid Given - By Whom
+mult_inj	With Multiple Injuries
+noi_abrasion	Nature of Injury - Abrasion
+noi_abradtl	Nature of Injury - Abrasion Details
+noi_avulsion	Nature of Injury - Avulsion
+noi_avuldtl	Nature of Injury - Avulsion Details
+noi_burn_r	Nature of Injury - Burn
+noi_burn1	Degree of Burn - 1st
+noi_burn2	Degree of Burn - 2nd
+noi_burn3	Degree of Burn - 3rd
+noi_burn4	Degree of Burn - 4th
+noi_burndtl	Nature of Injury - Burn Site (Extent of Body Surface involved)
+noi_concussion	Nature of Injury - Concussion
+noi_concussiondtl	Nature of Injury - Concussion Details
+noi_contusion	Nature of Injury - Contusion
+noi_contudtl	Nature of Injury - Contusion Details
+noi_frac_clo	Nature of Injury - Fracture Closed Type
+noi_frcldtl	Nature of Injury - Fracture Closed Type Details
+noi_frac_ope	Nature of Injury - Fracture Open Type
+noi_fropdtl	Nature of Injury - Fracture Open Type Details
+noi_owound	Nature of Injury - Open Wound/Laceration
+noi_owoudtl	Nature of Injury - Open Wound/Laceration Details
+noi_amp	Nature of Injury - Traumatic Amputation
+noi_ampdtl	Nature of Injury - Traumatic Amputation Details
+noi_others	Nature of Injury - Others
+noi_otherinj	Nature of Injury - Others, Pls. specify injury, body parts affected
+ext_bite	External Cause - Bite/Stings
+ext_bite_sp	External Cause - Bite/Stings, Specify animal/insect
+ext_burn_r	External Cause - Burns
+ref_burn_code	External Cause - Burns (Details)
+ext_burn_sp	External Cause - Burns, Others specify
+ext_chem	External Cause - Chemical Substance
+ext_chem_sp	External Cause - Chemical Substance, specify
+ext_sharp	External Cause - Contact with sharp objects
+ext_sharp_sp	External Cause - Contact with sharp objects, Specify object
+ext_drown_r	External Cause - Drowning
+ref_drowning_cope	External Cause - Drowning (Details)
+ext_drown_sp	External Cause - Drowning, Others specify
+ext_expo_nature_r	External Cause - Exposure to Forces of Nature
+ref_expnature_code	External Cause - Exposure to Forces of Nature (Details)
+ext_expo_nature_sp	External Cause - Exposure to Forces of Nature, Others specify
+ext_fall	External Cause - Fall
+ext_fall_prep	External Cause - Fall, from/in/on/into
+ext_falldtl	External Cause - Fall, details
+ext_firecracker_r	External Cause - Firecracker
+firecracker_code	External Cause - Firecracker (Details)
+ext_firecracker_sp	External Cause - Firecracker, Others specify
+ext_sexual	External Cause - Sexual Assault/ Sexual Abuse/ Rape (Alleged)
+ext_gun	External Cause - Gunshot
+ext_gun_sp	External Cause - Gunshot, Specify weapon
+ext_hang	External Cause - Hanging/Strangulation
+ext_maul	External Cause - Mauling/Assault
+ext_transport	External Cause - Transport/Vehicular Accident
+ext_other	External Cause - Others
+ext_other_sp	External Cause - Others, specify
+pat_veh_type	Vehicles Type (Land, Water, Air)
+type_code	Transport/Vehicular Accident - Collision/Non-Collision
+vehicle_type_id	Vehicles Involved - Patient's Vehicle
+pat_veh_sp	Patient's Vehicle, Others specify
+etc_veh	Vehicles Involved - Other Vehicle/Object Involved
+etc_veh_sp	Other Vehicle/Object Involved, Others specify
+position_code	Transport/Vehicular Accident - Position of Patient
+pos_pat_sp	Position of patient, Others specify
+victim_inv	Transport/Vehicular Accident - Victims Involved
+victim_in_sp	Victims Involved - With others, specify how many
+position_code	Place of Occurrence
+poc_wp_spec	Place of Occurence - Workplace, specify
+poc_etc_spec	Place of Occurence - Others, specify
+activity_code	Activity of the Patient at the time of incident
+act_etc_spec	Activity of the Patient at the time of incident - Others, specify
+risk_none	Risk Factor - None
+risk_alcliq	Risk Factor - Alcohol/Liquor
+risk_drugs	Risk Factor - Drugs
+risk_sleep	Risk Factor - Sleepy
+risk_smoke	Risk Factor - Smoking
+risk_mobpho	Risk Factor - Using Mobile
+risk_other	Risk Factor - Others
+risk_etc_spec	Risk Factor - Others, specify
+safe_none	Safety - None
+safe_airbag	Safety - Airbag
+safe_helmet	Safety - Helmet
+safe_cseat	Safety - Childseat
+safe_sbelt	Safety - Seatbelt
+safe_unkn	Safety - Unknown
+safe_drown	Safety - Life vest/Lifejacket/Floatation device (for drowning)
+safe_other	Safety - Others
+safe_other_sp	Safety - Others, specify
+trans_ref	ER/OPD/BHS/RHU - Transferred from another hospital/facility
+trans_ref2	Referred by another Hospital/Facility for Laboratory and/or other medical purposes
+ref_hosp_code	ER/OPD/BHS/RHU - Name of Originating Hospital
+ref_hosp_code_sp	Name of Originating Hospital - Others, Specify
+ref_physician	ER/OPD/BHS/RHU - Name of Originating Physician
+status_code	 Status Upon Reaching Hospital
+status_code2	Mode of Transport to the Hospital/Facility
+stat_reachdtl	Mode of Transport to the Hospital/Facility - Others, specify
+Diagnosis	Initial Impression
+icd_10_nature_er	ICD-10 Code - Nature of Injury
+icd_10_external_er	ICD-10 Code - External Cause of Injury
+icd_10_treat	Treatment Given
+icd_10_treat_sp	Treatment Given - Yes, specify
+disp_er	Disposition
+disp_er_sp	ER Disposition Transferred - Specify
+disp_er_sp_oth	Name of Hospital - Others, Specify
+outcome_er	Outcome
+complete_diagnosis	IN-PATIENT (for admitted hospital case only) - Complete Final Diagnosis
+disp_inpat	 IN-PATIENT (for admitted hospital case only) - Disposition
+disp_inpat_oth	Name of Originating Hospital
+disp_inpat_sp	Name of Originating Hospital - Others, Specify
+disp_inpat_sp2	IN-PATIENT Disposition - Others, Specify
+outcome_inpat	 IN-PATIENT (for admitted hospital case only) - Outcome
+icd10_nature_inpatient	IN-PATIENT (for admitted hospital case only) - ICD-10 Code: Nature of Injury
+icd_10_ext_inpatient	IN-PATIENT (for admitted hospital case only) - ICD-10 Code: External Cause of Injury
+comments	Comments
+fac_regno	Uploading Facility No.
+upload	Upload
+class	class
+pre_date	Date Completed
+pno	PNO
+password	password
+Return Value : RAW XML Format
+XML Tags	Description
+response_code	Contains Response Code
+response_desc	Contains Response Description
+response_datetime	Server Response Date and Time
+Code	Description
+100	Web Service is UP
+101	Web Service is under Maintenance
+XML Format
+<oneiss>
+   <response_code>100</response_code>
+   <response_desc>Web Service is UP</response_desc>
+   <response_datetime>June 15, 2013 1:43 AM</response_datetime>
+</oneiss>
+Sample Usage :
+/* initialize the soapclient class */
+$server = new SoapClient('http://oneiss.doh.gov.ph/webservice/index.php?wsdl');
+/* call the function */
+$check = $server->webInjury($patient_iden_no, $patlast, $patfirst, $patmiddle, $date_of_birth, $sex, $cancer_site, $cancer_stage);
+DataSelect
+Online National Electronic Surveillance System
+All Rights Reserved 2025

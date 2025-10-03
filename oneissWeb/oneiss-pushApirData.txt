@@ -1,0 +1,708 @@
+ 
+Online National Electronic Surveillance System
+Web Service
+Date : October 03, 2025View the WSDL for the service. Click on an operation name to view it's details
+  Web Service Menu
+Response Code List
+Methods
+pushInjuryData
+pushApirData
+webInjury
+DataSelect
+WSDL = http://oneiss.doh.gov.ph/webservice/index.php?wsdl
+Response Code List
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Web Service Function List
+pushInjuryData
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pushApirData
+Function : pushApirData()
+Description :
+This Function can be used to check if the Web Service is alive
+Parameters :
+pushApirData($Param)
+#	Key Name	Description	Value [Format/Length]	Required	Reference Table	Reference Value Field	Valid Value
+1	Pat_Facility_No	Facility Name	VARCHAR(25)	Yes			
+2	reg_no	Registry Number	VARCHAR(15)	No			Registry Number
+3	tempreg_no	Temporary Registry Number	VARCHAR(15)	No			Temporary Registry Number
+4	sentinel	Sentinel	VARCHAR(15)	No			
+5	date_report	Date of Report	DATE ( YYYY-MM-DD )	No			Date Reported (yyyy-mm-dd)
+6	time_report	Time of Report	TIME ( HH:MM:SS)	No			Time Reported (00:00:00)
+7	Pat_Last_Name	Patient Last Name	VARCHAR(200)	Yes			Patient's Family Name (e.g. Dela Cruz)
+8	Pat_First_Name	Patient First Name	VARCHAR(200)	Yes			Patient's Given Name (e.g. Juan)
+9	Pat_Middle_Name	Patient Middle Name	VARCHAR(200)	Yes			Patient's Middle Name (e.g. Bautista)
+10	Pat_Suffix	Patient Suffix	VARCHAR(255)	No			Patient's Suffix Name (e.g Jr.)
+11	Pat_Date_of_Birth	Date of Birth	DATE ( YYYY-MM-DD )	No			Date of Birth (yyyy-mm-dd)
+12	Age_Years	If Date of Birth is not Available - in Years	VARCHAR(3)	No			Patient's Age in Years if Date of Birth is not given
+13	Age_Months	If Date of Birth is not Available - in Months	VARCHAR(2)	No			Patient's Age in Months if Date of Birth is not given
+14	Age_Days	If Date of Birth is not Available - in Days	VARCHAR(2)	No			Patient's Age in Days if Date of Birth is not given
+15	Pat_Sex	Patient Sex	VARCHAR(1)	Yes			Patient's Sex - Use the sex code that came in the reference table(ref_sex) (e.g. M) Note: Check the reference table (ref_sex) to view sex codes and descriptions
+16	Pat_Current_Address_StreetName	Patient Current Address Street Name	VARCHAR(100)	Yes			Patient's Permanent Address(Street)
+17	Pat_Current_Address_Region	Patient Current Address Region	VARCHAR(2)	Yes	ref_region	regcode	Patient's Permanent Address(Region) - Use the region code that came in reference table(rregion) (e.g. 13) Note: Check the reference table(rregion) to view region code's descriptions & only integer is accepted in this field
+18	Pat_Current_Address_Province	Patient Current Address Province	VARCHAR(4)	Yes	ref_prov	provcode	Patient's Permanent Address(Province) - Use the province code that came in reference table(rprov) (e.g. 1376) Note: Check the reference table(rprov) to view province code's descriptions & only integer is accepted in this field
+19	Pat_Current_Address_City	Patient Current Address City/Municipality	VARCHAR(6)	Yes	ref_citymun	citycode	Patient's Permanent Address(City) - Use the city code that came in reference table(rcitymun) (e.g. 137605) Note: Check the reference table(rcitymun) to view city code's descriptions & only integer is accepted in this field
+20	Pat_Current_Address_Barangay	Patient Current Address Barangay	VARCHAR(9)	No	ref_brgy	bgycode	Patient's Permanent Address(Barangay) - Use the city code that came in reference table(rbrgy) (e.g. 137605001) Note: Check the reference table(rbrgy) to view brgy code's descriptions & only integer is accepted in this field
+21	telephone_no	Telphon Number	VARCHAR(15)	No			Patients Telephone Number
+22	four_ps_member	4P's Member	VARCHAR(2)	No	ref_yes_no	yes_no_code	If Patient is 4Ps Member
+23	inj_date	Date of Injury	VARCHAR(50)	Yes			Patient's Date of Injury (yyyy-mm-dd 00:00:00)
+24	inj_time	Timet of Injury	TIME ( HH:MM:SS)	Yes			Patient's Time of Injury (00:00:00)
+25	plc_pat_str	Place of Injury Street Name	VARCHAR(255)	No			Patient's Place of Injury Address(Street)
+26	poi_sameadd	Place of Injury Same Address	VARCHAR(3)	No	ref_yes_no	yes_no_code	If Patients Place of Injury the Same with permanent addredd
+27	poi_regcode	Place of Injury Region	VARCHAR(2)	No	ref_region	regcode	Patient's Place of Injury Region - Use the region code that came in reference table(rregion) (e.g. 13) Note: Check the reference table(rregion) to view region code's descriptions & only integer is accepted in this field
+28	poi_provcode	Place of Injury Province	VARCHAR(4)	No	ref_prov	provcode	Patient's Place of Injury Province - Use the province code that came in reference table(rprov) (e.g. 1376) Note: Check the reference table(rprov) to view province code's descriptions & only integer is accepted in this field
+29	poi_citycode	Place of Injury City/Municipality	VARCHAR(6)	No	ref_citymun	citycode	Patient's Place of Injury City - Use the city code that came in reference table(rcitymun) (e.g. 137605) Note: Check the reference table(rcitymun) to view city code's descriptions & only integer is accepted in this field
+30	poi_bgycode	Place of Injury Barangay	VARCHAR(9)	No	ref_brgy	bgycode	Patient's Place of Injury Barangay - Use the brgy code that came in reference table(rbrgy) (e.g. 137605001) Note: Check the reference table(rbrgy) to view Barangay code's descriptions & only integer is accepted in this field
+31	place_of_occurence	Place of Occurence	VARCHAR(2)	No	ref_place_of_occurrence	placeof_occurence_code	Place of Occurrence
+32	place_of_occurence_others	Place of Occurence Others	VARCHAR(100)	No			Place of Occurrence, Others
+33	Encounter_Date	Date of Consultation	DATE ( YYYY-MM-DD )	Yes			Patient's Date of Consultation (yyyy-mm-dd 00:00:00)
+34	Encounter_Time	Time of Consultation	TIME ( HH:MM:SS)	Yes			Patient's Time of Consultation (00:00:00)
+35	referral	Refferal	VARCHAR(2)	No	ref_yes_no	yes_no_code	If Refered
+36	reffered_from	Refferal From	VARCHAR(25)	No			Name of Refererred Facility
+37	involve_code	Type of Involvement	VARCHAR(2)	Yes	ref_injury_involve	involve_code	Type of Involvement
+38	typeof_injurycode	Nature of Injury	VARCHAR(2)	Yes	ref_injury_type	typeof_injurycode	Nature of Injury
+39	injury_type_others	Nature of Injury Others	VARCHAR(100)	No			Nature of Injury Others
+40	mult_inj	Multiple Injury	CHAR(1)	No	ref_yes_no	yes_no_code	Multiple Injury
+41	if_fireworks_related	Type of injury - Blast/burn WITH amputation	VARCHAR(2)	No	ref_yes_no	yes_no_code	Type of injury - Blast/burn WITH amputation
+42	if_fireworks_related_2	Type of injury - Blast/burn NO amputation	VARCHAR(2)	No	ref_yes_no	yes_no_code	Type of injury - Blast/burn NO amputation
+43	if_fireworks_related_3	Type of injury - Eye injury	VARCHAR(2)	No	ref_yes_no	yes_no_code	Type of injury - Eye injury
+44	diagnosis	Diagnosis - Nature/Site	VARCHAR(255)	Yes			Diagnosis - Nature/Site
+45	analoc_eye	Anatomical Location - Eye	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Eye
+46	analoc_head	Anatomical Location - Head	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Head
+47	analoc_neck	Anatomical Location - Neck	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Neck
+48	analoc_chest	Anatomical Location - Chest	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Chest
+49	analoc_back	Anatomical Location - Back	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Back
+50	analoc_abdomen	Anatomical Location - Abdomen	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Abdomen
+51	analoc_buttocks	Anatomical Location - Buttocks	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Buttocks
+52	analoc_hand	Anatomical Location - Hand	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Hand
+53	analoc_forearmarm	Anatomical Location - Forearm/Arm	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Forearm/Arm
+54	analoc_pelvic	Anatomical Location - Pelvic	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Pelvic
+55	analoc_thigh	Anatomical Location - Thigh	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Thigh
+56	analoc_knee	Anatomical Location - Knee	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Knee
+57	analoc_legs	Anatomical Location - Legs	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Legs
+58	analoc_foot	Anatomical Location - Foot	VARCHAR(3)	No	ref_yes_no	yes_no_code	Anatomical Location - Foot
+59	firecracker_code	Type of Firecracker	VARCHAR(2)	No	ref_firecracker	firecracker_code	Type of Firecracker
+60	firecracker_others	Type of Firecracker, Others	VARCHAR(150)	No			Type of Firecracker, Others
+61	firecracker_legality	Legality of Firecracker	VARCHAR(2)	No	ref_firecracker_legality	firecracker_legality_code	Legality of Firecracker
+62	liquor	Liquor Intoxication	CHAR(1)	Yes	ref_yes_no	yes_no_code	Liquor Intoxication
+63	treatment_code	Treatment Given: ATS/TIG	VARCHAR(2)	No	ref_yes_no	yes_no_code	Treatment Given: ATS/TIG
+64	treatment_code2	Treatment Given: Toxoid	VARCHAR(2)	No	ref_yes_no	yes_no_code	Treatment Given: Toxoid
+65	treatment_code3	Treatment Given: Others, Specify	VARCHAR(2)	No	ref_yes_no	yes_no_code	Treatment Given: Others, Specify
+66	given_others	Other Treatment Given	VARCHAR(100)	No			Other Treatment Given
+67	disposition_code	Disposition	VARCHAR(5)	Yes	ref_disposition	disposition_code	Disposition
+68	transferred_to	Transferred To	VARCHAR(100)	No			Transferred To
+69	transferred_to_sp	Transferred To, Specify	VARCHAR(255)	No			Transferred To, Specify
+70	outcome_code	Outcome	VARCHAR(100)	No	ref_outcome_paputok	outcome_code	Outcome
+71	date_died	Date Died	DATE ( YYYY-MM-DD )	No			Date Died
+72	aware	Awareness	VARCHAR(2)	No	ref_yes_no	yes_no_code	Awareness
+73	educ_material	Educational Material Regarding Fireworks	VARCHAR(100)	No	ref_material	material_code	Educational Material Regarding Fireworks
+74	fac_regno	Uploading Facility No.	VARCHAR(30)	No			Uploading Facility No.
+75	Facility_Reg	Facility Address Region	VARCHAR(2)	No	ref_region	regcode	Facility Address Region
+76	Facility_Prov	Facility Address Province	VARCHAR(4)	No	ref_prov	provcode	Facility Address Province
+77	Facility_CityMun	Facility Address City/Municipality	VARCHAR(6)	No	ref_citymun	citycode	Facility Address City/Municipality
+Data Array Form
+$parameter=array("Data"=> array(
+'Pat_Facility_No' => '',
+'reg_no' => 'NM201600100001',
+'tempreg_no' => 'TN0000000100001',
+'sentinel' => '',
+'date_report' => '2016-03-29',
+'time_report' => '8:30:00',
+'Pat_Last_Name' => 'Platon',
+'Pat_First_Name' => 'Jonathan',
+'Pat_Middle_Name' => 'Elec',
+'Pat_Suffix' => '',
+'Pat_Date_of_Birth' => '1988-10-06',
+'Age_Years' => '23',
+'Age_Months' => '11',
+'Age_Days' => '5',
+'Pat_Sex' => 'M',
+'Pat_Current_Address_StreetName' => 'main street',
+'Pat_Current_Address_Region' => '04',
+'Pat_Current_Address_Province' => '0434',
+'Pat_Current_Address_City' => '043411',
+'Pat_Current_Address_Barangay' => '043411001',
+'telephone_no' => '86517811',
+'four_ps_member' => 'Y',
+'inj_date' => '2016-03-30 00:00:00',
+'inj_time' => '07:38:02',
+'plc_pat_str' => 'main street',
+'poi_sameadd' => 'Y',
+'poi_regcode' => '04',
+'poi_provcode' => '0434',
+'poi_citycode' => '043411',
+'poi_bgycode' => '043411001',
+'place_of_occurence' => '1',
+'place_of_occurence_others' => '',
+'Encounter_Date' => '2016-03-30 00:00:00',
+'Encounter_Time' => '07:38:02',
+'referral' => 'Y',
+'reffered_from' => '',
+'involve_code' => '10',
+'typeof_injurycode' => '10',
+'injury_type_others' => '',
+'mult_inj' => 'N',
+'if_fireworks_related' => 'Y',
+'if_fireworks_related_2' => 'N',
+'if_fireworks_related_3' => 'N',
+'diagnosis' => 'INGESTION',
+'analoc_eye' => 'Y',
+'analoc_head' => 'N',
+'analoc_neck' => 'N',
+'analoc_chest' => 'N',
+'analoc_back' => 'N',
+'analoc_abdomen' => 'N',
+'analoc_buttocks' => 'N',
+'analoc_hand' => 'N',
+'analoc_forearmarm' => 'N',
+'analoc_pelvic' => 'N',
+'analoc_thigh' => 'N',
+'analoc_knee' => 'N',
+'analoc_legs' => 'N',
+'analoc_foot' => 'N',
+'firecracker_code' => '10',
+'firecracker_others' => '',
+'firecracker_legality' => '2',
+'liquor' => 'Y',
+'treatment_code' => 'Y',
+'treatment_code2' => 'Y',
+'treatment_code3' => 'N',
+'given_others' => '',
+'disposition_code' => 'TRASH',
+'transferred_to' => '',
+'transferred_to_sp' => '',
+'outcome_code' => '1',
+'date_died' => '',
+'aware' => 'Y',
+'educ_material' => '1,2',
+'fac_regno' => 'DOH000000000000877',
+'Facility_Reg' => '04',
+'Facility_Prov' => '0434',
+'Facility_CityMun' => '043411',
+)
+);
+Return Value : RAW XML Format
+XML Tags	Description
+response_code	Contains Response Code
+response_desc	Contains Response Description
+response_datetime	Server Response Date and Time
+Code	Description
+100	Web Service is UP
+101	Web Service is under Maintenance
+XML Format
+<oneiss>
+   <response_code>100</response_code>
+   <response_desc>Web Service is UP</response_desc>
+   <response_datetime>June 15, 2013 1:43 AM</response_datetime>
+</oneiss>
+Sample Usage :
+/* initialize the soapclient class */
+$server = new SoapClient('http://oneiss.doh.gov.ph/webservice/index.php?wsdl');
+/* Set the parameters */
+$param =array("Data"=> array(
+'Pat_Last_Name' => 'Platon',
+'Pat_First_Name' => 'Jonathan Joel',
+'Pat_Middle_Name' => 'Elec',
+'Pat_Date_of_Birth' => '1988-10-06 ',
+'Pat_Facility_No' => 'DOH000000000000877',
+'date_report' => '2018-03-29',
+'time_report' => '08:30:00',
+'tempreg_no' => 'TN0000000100001',
+'hosp_no' => '1065',
+'hosp_reg_no' => '1445',
+'hosp_cas_no' => '1926',
+'ptype_code' => 'i',
+'Pat_Sex' => 'M',
+'Pat_Current_Address_Region' => '04',
+'Pat_Current_Address_Province' => '0434',
+'Pat_Current_Address_City' => '043411',
+'temp_regcode' => '04',
+'temp_provcode' => '0434',
+'temp_citycode' => '043411',
+'Age_Years' => '29',
+'Age_Months' => 'NULL',
+'Age_Days' => 'NULL',
+'Pat_Phil_Health_No' => '20263849249',
+'plc_regcode' => '04',
+'plc_provcode' => '0434',
+'plc_ctycode' => '043411',
+'inj_date' => '2016-03-30',
+'inj_time' => '07:38:02',
+'Encounter_Date' => '2016-03-30',
+'Encounter_Time' => '08:27:25',
+'inj_intent_code' => '1',
+'first_aid_code' => 'N',
+'firstaid_others' => 'NULL',
+'firstaid_others2' => 'NULL',
+'mult_inj' => 'N',
+'noi_abrasion' => 'N',
+'noi_abradtl' => 'NULL',
+'noi_avulsion' => 'N',
+'noi_avuldtl' => 'NULL',
+'noi_burn_r' => 'N',
+'noi_burn1' => 'N',
+'noi_burn2' => 'N',
+'noi_burn3' => 'N',
+'noi_burn4' => 'N',
+'noi_burndtl' => 'NULL',
+'noi_concussion' => 'N',
+'noi_concussiondtl' => 'NULL',
+'noi_contusion' => 'N',
+'noi_contudtl' => 'NULL',
+'noi_frac_clo' => 'N',
+'noi_frcldtl' => 'NULL',
+'noi_frac_ope' => 'N',
+'noi_fropdtl' => 'NULL',
+'noi_owound' => 'N',
+'noi_owoudtl' => 'NULL',
+'noi_amp' => 'N',
+'noi_ampdtl' => 'NULL',
+'noi_others' => 'N',
+'noi_otherinj' => 'NULL',
+'ext_bite' => 'N',
+'ext_bite_sp' => 'NULL',
+'ext_burn_r' => 'N',
+'ref_burn_code' => '00',
+'ext_burn_sp' => 'NULL',
+'ext_chem' => 'N',
+'ext_chem_sp' => 'NULL',
+'ext_sharp' => 'N',
+'ext_sharp_sp' => 'NULL',
+'ext_drown_r' => 'N',
+'ref_drowning_cope' => '00',
+'ext_drown_sp' => 'NULL',
+'ext_expo_nature_r' => 'N',
+'ref_expnature_code' => '00',
+'ext_expo_nature_sp' => 'NULL',
+'ext_fall' => 'N',
+'ext_fall_prep' => 'N',
+'ext_falldtl' => 'NULL',
+'ext_firecracker_r' => 'N',
+'firecracker_code' => '00',
+'ext_firecracker_sp' => 'NULL',
+'ext_sexual' => 'N',
+'ext_gun' => 'Y',
+'ext_gun_sp' => 'MAGNUM 357 PISTOL',
+'ext_hang' => 'N',
+'ext_maul' => 'N',
+'ext_transport' => 'N',
+'ext_other' => 'N',
+'ext_other_sp' => 'NULL',
+'pat_veh_type' => 'NULL ',
+'type_code' => '00',
+'severity' => '00',
+'pat_veh' => '00',
+'pat_veh_sp' => 'NULL',
+'etc_veh' => '00',
+'etc_veh_sp' => 'NULL',
+'position_code' => '00',
+'pos_pat_sp' => 'NULL',
+'place_occ_code' => '50',
+'poc_wp_spec' => 'NULL',
+'poc_etc_spec' => 'NULL',
+'activity_code' => '10',
+'act_etc_spec' => 'act_etc_spec',
+'risk_none' => 'Y',
+'risk_alcliq' => 'N',
+'risk_drugs' => 'N',
+'risk_sleep' => 'N',
+'risk_smoke' => 'N',
+'risk_mobpho' => 'N',
+'risk_other' => 'N',
+'risk_etc_spec' => 'NULL',
+'safe_none' => 'Y',
+'safe_airbag' => 'N',
+'safe_helmet' => 'Y',
+'safe_cseat' => 'N',
+'safe_sbelt' => 'N',
+'safe_unkn' => 'N',
+'safe_drown' => 'N',
+'safe_other' => 'N',
+'safe_other_sp' => 'NULL',
+'trans_ref' => 'N',
+'trans_ref2' => 'N',
+'ref_hosp_code' => 'NULL',
+'ref_hosp_code_sp' => 'NULL',
+'ref_physician' => 'NULL',
+'status_code' => '2',
+'mode_transport_code' => '3',
+'stat_reachdtl' => 'NULL',
+'Diagnosis' => 'GUN SHOT WOUND,
+POINT OF ENTRY SHOULDER,
+POINT OF EXIT BACK ',
+'icd_10_nature_er' => 'NULL',
+'icd_10_external_er' => 'NULL',
+'disp_er' => 'TRASH',
+'disp_er_sp' => 'NULL',
+'disp_er_sp_oth' => 'NULL',
+'outcome_er' => '10',
+'complete_diagnosis' => 'NULL',
+'disp_inpat' => 'NULL',
+'disp_inpat_oth' => 'NULL',
+'disp_inpat_sp' => 'NULL',
+'disp_inpat_sp2' => 'NULL',
+'outcome_inpat' => '00',
+'icd10_nature_inpatient' => 'NULL',
+'icd_10_ext_inpatient' => 'NULL',
+'comments' => 'NULL',
+'fac_regno' => 'NULL',
+'upload' => 'NULL',
+'class' => 'NULL',
+'pre_date' => '2016-03-30',
+)
+);
+/* call the function */
+$check = $server->pushApirData($param);
+webInjury
+
+
+
+
+
+
+
+
+DataSelect
+Online National Electronic Surveillance System
+All Rights Reserved 2025

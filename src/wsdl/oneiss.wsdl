@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="OneissService"
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:tns="http://oneiss.doh.gov.ph/webservice"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://oneiss.doh.gov.ph/webservice">
+
+  <types>
+    <xsd:schema targetNamespace="http://oneiss.doh.gov.ph/webservice">
+      <xsd:element name="pushInjuryData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Data" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="pushInjuryDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="pushApirData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Data" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="pushApirDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="webInjury">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Data" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="webInjuryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+    </xsd:schema>
+  </types>
+
+  <message name="pushInjuryDataRequest"><part name="parameters" element="tns:pushInjuryData"/></message>
+  <message name="pushInjuryDataResponseMsg"><part name="parameters" element="tns:pushInjuryDataResponse"/></message>
+
+  <message name="pushApirDataRequest"><part name="parameters" element="tns:pushApirData"/></message>
+  <message name="pushApirDataResponseMsg"><part name="parameters" element="tns:pushApirDataResponse"/></message>
+
+  <message name="webInjuryRequest"><part name="parameters" element="tns:webInjury"/></message>
+  <message name="webInjuryResponseMsg"><part name="parameters" element="tns:webInjuryResponse"/></message>
+
+  <portType name="OneissPortType">
+    <operation name="pushInjuryData">
+      <input message="tns:pushInjuryDataRequest"/>
+      <output message="tns:pushInjuryDataResponseMsg"/>
+    </operation>
+    <operation name="pushApirData">
+      <input message="tns:pushApirDataRequest"/>
+      <output message="tns:pushApirDataResponseMsg"/>
+    </operation>
+    <operation name="webInjury">
+      <input message="tns:webInjuryRequest"/>
+      <output message="tns:webInjuryResponseMsg"/>
+    </operation>
+  </portType>
+
+  <binding name="OneissBinding" type="tns:OneissPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="pushInjuryData">
+      <soap:operation soapAction="pushInjuryData"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+    <operation name="pushApirData">
+      <soap:operation soapAction="pushApirData"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+    <operation name="webInjury">
+      <soap:operation soapAction="webInjury"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+  </binding>
+
+  <service name="OneissService">
+    <documentation>Mock OneISS SOAP Service</documentation>
+    <port name="OneissPort" binding="tns:OneissBinding">
+      <soap:address location="http://localhost:8080/index.php"/>
+    </port>
+  </service>
+</definitions>

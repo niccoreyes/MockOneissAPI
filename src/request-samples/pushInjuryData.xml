@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushInjuryData>
+      <Data><![CDATA[{"Pat_Last_Name":"Platon","Pat_First_Name":"Jonathan"}]]></Data>
+    </urn:pushInjuryData>
+  </soapenv:Body>
+</soapenv:Envelope>
