@@ -64,6 +64,16 @@ PowerShell (Windows / PowerShell Core)
 - scripts/test_dataSelect.ps1
 - scripts/run_all_tests.ps1 — runs all tests and fails if any test fails
 
+New: PowerShell SOAP sender (curl-primary)
+- scripts/send-oneiss-soap.ps1 — reads a JSON payload and sends a SOAP envelope built from it.
+  - Behavior:
+    - Reads a JSON file with a top-level `Data` object (examples in `examples/`).
+    - Builds an RPC-style SOAP envelope with a `<Data>` payload (fields as XML elements).
+    - Uses `curl.exe` as the primary HTTP client (so Windows users must have curl on PATH).
+    - Saves the last sent envelope to `src/data/last_sent_envelope.xml` and the last HTTP response to `logs/last_response.txt` for debugging.
+  - Example:
+    - pwsh .\scripts\send-oneiss-soap.ps1 -JsonPath .\examples\payload_pushApirData.json -Endpoint http://localhost:8080/webservice/index.php -Method pushApirData
+
 Bash (Linux / macOS / WSL)
 - scripts/test_all.sh — runs pushInjuryData, pushApirData, webInjury
 
@@ -95,6 +105,8 @@ Why CDATA?
 - The WSDL says `Data` is an `xsd:string`. Wrapping your XML in CDATA keeps `Data` a string while letting you retain an XML-shaped payload.
 - The mock parses either JSON strings or XML strings inside `Data` and converts them to arrays automatically.
 
+Note: The included `send-oneiss-soap.ps1` script prefers sending structured XML (no CDATA) by default — it can be adjusted to wrap inner XML in CDATA if you need strict RPC/string semantics for testing.
+
 ---
 
 ## Admin UI
@@ -115,6 +127,14 @@ Why CDATA?
 - Empty or 400 responses
   - The mock validates some required fields and returns `400` codes with a list of missing fields. Check the Admin UI or console for details.
 
+Debugging tips
+- The server now exposes a debug mode — append `?debug=1` to the SOAP endpoint URL (or send header `X-Debug: 1`) and the endpoint will return the raw POST body and some server vars instead of attempting SOAP handling. This is useful to inspect exactly what the client sent.
+- Saved debug artifacts (useful after running `send-oneiss-soap.ps1`):
+  - `src/data/last_sent_envelope.xml` — the exact SOAP envelope the sender created
+  - `src/data/last_raw_post.xml` — raw request body received by the server (saved on POST)
+  - `logs/last_response.txt` — full HTTP response (headers + body) captured by the sender script
+  - `src/data/oneiss.db` — persisted request records (view via Admin UI)
+
 ---
 
 ## Repository layout
@@ -125,7 +145,7 @@ Why CDATA?
 - src/wsdl/oneiss.wsdl — WSDL used by SoapServer (copied from source)
 - src/request-samples/*.xml — Ready-to-send SOAP request samples
 - postman/* — Postman collection and environment
-- scripts/* — PowerShell and Bash test scripts
+- scripts/* — PowerShell and Bash test scripts (including the new `send-oneiss-soap.ps1`)
 
 ---
 
