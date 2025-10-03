@@ -1,0 +1,513 @@
+2025-10-03T09:34:48+00:00 [pushInjuryData]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushInjuryData>
+      <Data><![CDATA[{"Pat_Last_Name":"Platon","Pat_First_Name":"Jonathan"}]]></Data>
+    </urn:pushInjuryData>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+---
+2025-10-03T09:35:07+00:00 [pushApirData]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushApirData>
+      <Data><![CDATA[{"sample":"apir"}]]></Data>
+    </urn:pushApirData>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+---
+2025-10-03T09:36:12+00:00 [webInjury]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:webInjury>
+      <Data>
+        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
+        <Status>E</Status>
+        <rstatuscode>V</rstatuscode>
+        <date_report>2016-03-29</date_report>
+        <time_report>08:30:00</time_report>
+        <reg_no>NM201600100001</reg_no>
+        <tempreg_no>TN0000000100001</tempreg_no>
+        <hosp_no>1065</hosp_no>
+        <hosp_reg_no></hosp_reg_no>
+        <hosp_cas_no></hosp_cas_no>
+        <ptype_code>i</ptype_code>
+        <Pat_Last_Name>Platon</Pat_Last_Name>
+        <Pat_First_Name>Jonathan</Pat_First_Name>
+        <Pat_Middle_Name>Elec</Pat_Middle_Name>
+        <Pat_Sex>M</Pat_Sex>
+        <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>
+        <Age_Years>23</Age_Years>
+        <pno>45</pno>
+      </Data>
+    </urn:webInjury>
+  </soapenv:Body>
+</soapenv:Envelope>
+---
+2025-10-03T09:36:33+00:00 [pushApirData]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushApirData>
+      <Data>
+        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
+        <reg_no>NM201600100001</reg_no>
+        <tempreg_no>TN0000000100001</tempreg_no>
+        <sentinel></sentinel>
+        <date_report>2016-03-29</date_report>
+        <time_report>08:30:00</time_report>
+        <Pat_Last_Name>Platon</Pat_Last_Name>
+        <Pat_First_Name>Jonathan</Pat_First_Name>
+        <Pat_Middle_Name>Elec</Pat_Middle_Name>
+        <Pat_Suffix></Pat_Suffix>
+        <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>
+        <Age_Years>23</Age_Years>
+        <Age_Months>11</Age_Months>
+        <Age_Days>5</Age_Days>
+        <Pat_Sex>M</Pat_Sex>
+        <Pat_Current_Address_StreetName>main street</Pat_Current_Address_StreetName>
+        <Pat_Current_Address_Region>04</Pat_Current_Address_Region>
+        <Pat_Current_Address_Province>0434</Pat_Current_Address_Province>
+        <Pat_Current_Address_City>043411</Pat_Current_Address_City>
+        <Pat_Current_Address_Barangay>043411001</Pat_Current_Address_Barangay>
+        <telephone_no>86517811</telephone_no>
+        <four_ps_member>Y</four_ps_member>
+        <inj_date>2016-03-30 00:00:00</inj_date>
+        <inj_time>07:38:02</inj_time>
+        <plc_pat_str>main street</plc_pat_str>
+        <poi_sameadd>Y</poi_sameadd>
+        <poi_regcode>04</poi_regcode>
+        <poi_provcode>0434</poi_provcode>
+        <poi_citycode>043411</poi_citycode>
+        <poi_bgycode>043411001</poi_bgycode>
+        <place_of_occurence>1</place_of_occurence>
+        <place_of_occurence_others></place_of_occurence_others>
+        <Encounter_Date>2016-03-30 00:00:00</Encounter_Date>
+        <Encounter_Time>07:38:02</Encounter_Time>
+        <referral>Y</referral>
+        <reffered_from></reffered_from>
+        <involve_code>10</involve_code>
+        <typeof_injurycode>10</typeof_injurycode>
+        <injury_type_others></injury_type_others>
+        <mult_inj>N</mult_inj>
+        <if_fireworks_related>Y</if_fireworks_related>
+        <if_fireworks_related_2>N</if_fireworks_related_2>
+        <if_fireworks_related_3>N</if_fireworks_related_3>
+        <diagnosis>INGESTION</diagnosis>
+        <analoc_eye>Y</analoc_eye>
+        <analoc_head>N</analoc_head>
+        <analoc_neck>N</analoc_neck>
+        <analoc_chest>N</analoc_chest>
+        <analoc_back>N</analoc_back>
+        <analoc_abdomen>N</analoc_abdomen>
+        <analoc_buttocks>N</analoc_buttocks>
+        <analoc_hand>N</analoc_hand>
+        <analoc_forearmarm>N</analoc_forearmarm>
+        <analoc_pelvic>N</analoc_pelvic>
+        <analoc_thigh>N</analoc_thigh>
+        <analoc_knee>N</analoc_knee>
+        <analoc_legs>N</analoc_legs>
+        <analoc_foot>N</analoc_foot>
+        <firecracker_code>10</firecracker_code>
+        <firecracker_others></firecracker_others>
+        <firecracker_legality>2</firecracker_legality>
+        <liquor>Y</liquor>
+        <treatment_code>Y</treatment_code>
+        <treatment_code2>Y</treatment_code2>
+        <treatment_code3>N</treatment_code3>
+        <given_others></given_others>
+        <disposition_code>TRASH</disposition_code>
+        <transferred_to></transferred_to>
+        <transferred_to_sp></transferred_to_sp>
+        <outcome_code>1</outcome_code>
+        <date_died></date_died>
+        <aware>Y</aware>
+        <educ_material>1,2</educ_material>
+        <fac_regno>DOH000000000000877</fac_regno>
+        <Facility_Reg>04</Facility_Reg>
+        <Facility_Prov>0434</Facility_Prov>
+        <Facility_CityMun>043411</Facility_CityMun>
+      </Data>
+    </urn:pushApirData>
+  </soapenv:Body>
+</soapenv:Envelope>
+---
+2025-10-03T09:36:48+00:00 [pushInjuryData]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushInjuryData>
+      <Data>
+        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
+        <Status>E</Status>
+        <rstatuscode>V</rstatuscode>
+        <date_report>2016-03-29</date_report>
+        <time_report>08:30:00</time_report>
+        <reg_no>NM201600100001</reg_no>
+        <tempreg_no>TN0000000100001</tempreg_no>
+        <hosp_no>1065</hosp_no>
+        <hosp_reg_no></hosp_reg_no>
+        <hosp_cas_no></hosp_cas_no>
+        <ptype_code>i</ptype_code>
+        <Pat_Last_Name>Platon</Pat_Last_Name>
+        <Pat_First_Name>Jonathan</Pat_First_Name>
+        <Pat_Middle_Name>Elec</Pat_Middle_Name>
+        <Pat_Sex>M</Pat_Sex>
+        <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>
+        <Pat_Current_Address_Region>04</Pat_Current_Address_Region>
+        <Pat_Current_Address_Province>0434</Pat_Current_Address_Province>
+        <Pat_Current_Address_City>043411</Pat_Current_Address_City>
+        <temp_regcode>04</temp_regcode>
+        <temp_provcode>0434</temp_provcode>
+        <temp_citycode>043411</temp_citycode>
+        <Age_Years>23</Age_Years>
+        <Age_Month>11</Age_Month>
+        <Age_Day>5</Age_Day>
+        <Pat_Phil_Health_No>20263849249</Pat_Phil_Health_No>
+        <plc_regcode>04</plc_regcode>
+        <plc_provcode>0434</plc_provcode>
+        <plc_ctycode>043411</plc_ctycode>
+        <inj_date>2016-03-30 00:00:00</inj_date>
+        <inj_time>07:38:02</inj_time>
+        <Encounter_Date>2016-03-30 00:00:00</Encounter_Date>
+        <Encounter_Time>08:27:25</Encounter_Time>
+        <inj_intent_code>1</inj_intent_code>
+        <first_aid_code>N</first_aid_code>
+        <firstaid_others></firstaid_others>
+        <firstaid_others2></firstaid_others2>
+        <mult_inj>N</mult_inj>
+        <noi_abrasion>N</noi_abrasion>
+        <noi_abradtl></noi_abradtl>
+        <noi_avulsion>N</noi_avulsion>
+        <noi_avuldtl></noi_avuldtl>
+        <noi_burn_r>N</noi_burn_r>
+        <noi_burn1>N</noi_burn1>
+        <noi_burn2>N</noi_burn2>
+        <noi_burn3>N</noi_burn3>
+        <noi_burn4>N</noi_burn4>
+        <noi_burndtl></noi_burndtl>
+        <noi_concussion>N</noi_concussion>
+        <noi_concussiondtl></noi_concussiondtl>
+        <noi_contusion>N</noi_contusion>
+        <noi_contudtl></noi_contudtl>
+        <noi_frac_clo>N</noi_frac_clo>
+        <noi_frcldtl></noi_frcldtl>
+        <noi_frac_ope>N</noi_frac_ope>
+        <noi_fropdtl></noi_fropdtl>
+        <noi_owound>N</noi_owound>
+        <noi_owoudtl></noi_owoudtl>
+        <noi_amp>N</noi_amp>
+        <noi_ampdtl></noi_ampdtl>
+        <noi_others>N</noi_others>
+        <noi_otherinj></noi_otherinj>
+        <ext_bite>N</ext_bite>
+        <ext_bite_sp></ext_bite_sp>
+        <ext_burn_r>N</ext_burn_r>
+        <ref_burn_code></ref_burn_code>
+        <ext_burn_sp></ext_burn_sp>
+        <ext_chem>N</ext_chem>
+        <ext_chem_sp></ext_chem_sp>
+        <ext_sharp>N</ext_sharp>
+        <ext_sharp_sp></ext_sharp_sp>
+        <ext_drown_r>N</ext_drown_r>
+        <ref_drowning_cope></ref_drowning_cope>
+        <ext_drown_sp></ext_drown_sp>
+        <ext_expo_nature_r>N</ext_expo_nature_r>
+        <ref_expnature_code></ref_expnature_code>
+        <ext_expo_nature_sp></ext_expo_nature_sp>
+        <ext_fall>N</ext_fall>
+        <ext_falldtl></ext_falldtl>
+        <ext_firecracker_r>N</ext_firecracker_r>
+        <firecracker_code></firecracker_code>
+        <ext_firecracker_sp></ext_firecracker_sp>
+        <ext_sexual>N</ext_sexual>
+        <ext_gun>Y</ext_gun>
+        <ext_gun_sp>MAGNUM 357 PISTOL</ext_gun_sp>
+        <ext_hang>N</ext_hang>
+        <ext_maul>N</ext_maul>
+        <ext_transport>N</ext_transport>
+        <ext_other>N</ext_other>
+        <ext_other_sp></ext_other_sp>
+        <vehicle_type_id>NULL</vehicle_type_id>
+        <ref_veh_acctype_code></ref_veh_acctype_code>
+        <vehicle_code></vehicle_code>
+        <pat_veh_sp></pat_veh_sp>
+        <etc_veh></etc_veh>
+        <etc_veh_sp></etc_veh_sp>
+        <position_code></position_code>
+        <pos_pat_sp></pos_pat_sp>
+        <place_occ_code>50</place_occ_code>
+        <poc_wp_spec></poc_wp_spec>
+        <poc_etc_spec></poc_etc_spec>
+        <activity_code>10</activity_code>
+        <act_etc_spec>act_etc_spec</act_etc_spec>
+        <risk_none>Y</risk_none>
+        <risk_alcliq>N</risk_alcliq>
+        <risk_sleep>N</risk_sleep>
+        <risk_smoke>N</risk_smoke>
+        <risk_mobpho>N</risk_mobpho>
+        <risk_other>N</risk_other>
+        <risk_etc_spec></risk_etc_spec>
+        <safe_none>Y</safe_none>
+        <safe_airbag>N</safe_airbag>
+        <safe_helmet>Y</safe_helmet>
+        <safe_cseat>N</safe_cseat>
+        <safe_sbelt>N</safe_sbelt>
+        <safe_unkn>N</safe_unkn>
+        <safe_drown>N</safe_drown>
+        <safe_other>N</safe_other>
+        <safe_other_sp></safe_other_sp>
+        <trans_ref>N</trans_ref>
+        <trans_ref2>N</trans_ref2>
+        <ref_hosp_code></ref_hosp_code>
+        <ref_hosp_code_sp></ref_hosp_code_sp>
+        <ref_physician></ref_physician>
+        <status_code>2</status_code>
+        <mode_transport_code>3</mode_transport_code>
+        <stat_reachdtl></stat_reachdtl>
+        <Diagnosis>GUN SHOT WOUND, POINT OF ENTRY SHOULDER, POINT OF EXIT BACK</Diagnosis>
+        <icd_10_nature_er></icd_10_nature_er>
+        <icd_10_external_er></icd_10_external_er>
+        <disposition_code>TRASH</disposition_code>
+        <disp_er_sp></disp_er_sp>
+        <disp_er_sp_oth></disp_er_sp_oth>
+        <outcome_code>10</outcome_code>
+        <complete_diagnosis></complete_diagnosis>
+        <disp_inpat></disp_inpat>
+        <disp_inpat_oth></disp_inpat_oth>
+        <disp_inpat_sp></disp_inpat_sp>
+        <disp_inpat_sp2></disp_inpat_sp2>
+        <outcome_inpat></outcome_inpat>
+        <icd10_nature_inpatient></icd10_nature_inpatient>
+        <icd_10_ext_inpatient></icd_10_ext_inpatient>
+        <comments></comments>
+        <fac_regno></fac_regno>
+        <upload></upload>
+        <class></class>
+        <pre_date></pre_date>
+        <pno>45</pno>
+      </Data>
+    </urn:pushInjuryData>
+  </soapenv:Body>
+</soapenv:Envelope>
+---
+2025-10-03T09:37:00+00:00 [webInjury]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:webInjury>
+      <Data>
+        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
+        <Status>E</Status>
+        <rstatuscode>V</rstatuscode>
+        <date_report>2016-03-29</date_report>
+        <time_report>08:30:00</time_report>
+        <reg_no>NM201600100001</reg_no>
+        <tempreg_no>TN0000000100001</tempreg_no>
+        <hosp_no>1065</hosp_no>
+        <ptype_code>i</ptype_code>
+        <Pat_Last_Name>Platon</Pat_Last_Name>
+        <Pat_First_Name>Jonathan</Pat_First_Name>
+        <Pat_Middle_Name>Elec</Pat_Middle_Name>
+        <Pat_Sex>M</Pat_Sex>
+        <pno>45</pno>
+      </Data>
+    </urn:webInjury>
+  </soapenv:Body>
+</soapenv:Envelope>
+---
+2025-10-03T09:41:38+00:00 [pushApirData]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushApirData>
+      <Data><![CDATA[{"sample":"apir"}]]></Data>
+    </urn:pushApirData>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+---
+2025-10-03T09:42:02+00:00 [pushApirData]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushApirData>
+      <Data><![CDATA[{"sample":"apir"}]]></Data>
+    </urn:pushApirData>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+---
+2025-10-03T09:46:22+00:00 [pushInjuryData]
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushInjuryData>
+      <Data>
+        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
+        <Status>E</Status>
+        <rstatuscode>V</rstatuscode>
+        <date_report>2016-03-29</date_report>
+        <time_report>08:30:00</time_report>
+        <reg_no>NM201600100001</reg_no>
+        <tempreg_no>TN0000000100001</tempreg_no>
+        <hosp_no>1065</hosp_no>
+        <hosp_reg_no></hosp_reg_no>
+        <hosp_cas_no></hosp_cas_no>
+        <ptype_code>i</ptype_code>
+        <Pat_Last_Name>Platon</Pat_Last_Name>
+        <Pat_First_Name>Jonathan</Pat_First_Name>
+        <Pat_Middle_Name>Elec</Pat_Middle_Name>
+        <Pat_Sex>M</Pat_Sex>
+        <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>
+        <Pat_Current_Address_Region>04</Pat_Current_Address_Region>
+        <Pat_Current_Address_Province>0434</Pat_Current_Address_Province>
+        <Pat_Current_Address_City>043411</Pat_Current_Address_City>
+        <temp_regcode>04</temp_regcode>
+        <temp_provcode>0434</temp_provcode>
+        <temp_citycode>043411</temp_citycode>
+        <Age_Years>23</Age_Years>
+        <Age_Month>11</Age_Month>
+        <Age_Day>5</Age_Day>
+        <Pat_Phil_Health_No>20263849249</Pat_Phil_Health_No>
+        <plc_regcode>04</plc_regcode>
+        <plc_provcode>0434</plc_provcode>
+        <plc_ctycode>043411</plc_ctycode>
+        <inj_date>2016-03-30 00:00:00</inj_date>
+        <inj_time>07:38:02</inj_time>
+        <Encounter_Date>2016-03-30 00:00:00</Encounter_Date>
+        <Encounter_Time>08:27:25</Encounter_Time>
+        <inj_intent_code>1</inj_intent_code>
+        <first_aid_code>N</first_aid_code>
+        <firstaid_others></firstaid_others>
+        <firstaid_others2></firstaid_others2>
+        <mult_inj>N</mult_inj>
+        <noi_abrasion>N</noi_abrasion>
+        <noi_abradtl></noi_abradtl>
+        <noi_avulsion>N</noi_avulsion>
+        <noi_avuldtl></noi_avuldtl>
+        <noi_burn_r>N</noi_burn_r>
+        <noi_burn1>N</noi_burn1>
+        <noi_burn2>N</noi_burn2>
+        <noi_burn3>N</noi_burn3>
+        <noi_burn4>N</noi_burn4>
+        <noi_burndtl></noi_burndtl>
+        <noi_concussion>N</noi_concussion>
+        <noi_concussiondtl></noi_concussiondtl>
+        <noi_contusion>N</noi_contusion>
+        <noi_contudtl></noi_contudtl>
+        <noi_frac_clo>N</noi_frac_clo>
+        <noi_frcldtl></noi_frcldtl>
+        <noi_frac_ope>N</noi_frac_ope>
+        <noi_fropdtl></noi_fropdtl>
+        <noi_owound>N</noi_owound>
+        <noi_owoudtl></noi_owoudtl>
+        <noi_amp>N</noi_amp>
+        <noi_ampdtl></noi_ampdtl>
+        <noi_others>N</noi_others>
+        <noi_otherinj></noi_otherinj>
+        <ext_bite>N</ext_bite>
+        <ext_bite_sp></ext_bite_sp>
+        <ext_burn_r>N</ext_burn_r>
+        <ref_burn_code></ref_burn_code>
+        <ext_burn_sp></ext_burn_sp>
+        <ext_chem>N</ext_chem>
+        <ext_chem_sp></ext_chem_sp>
+        <ext_sharp>N</ext_sharp>
+        <ext_sharp_sp></ext_sharp_sp>
+        <ext_drown_r>N</ext_drown_r>
+        <ref_drowning_cope></ref_drowning_cope>
+        <ext_drown_sp></ext_drown_sp>
+        <ext_expo_nature_r>N</ext_expo_nature_r>
+        <ref_expnature_code></ref_expnature_code>
+        <ext_expo_nature_sp></ext_expo_nature_sp>
+        <ext_fall>N</ext_fall>
+        <ext_falldtl></ext_falldtl>
+        <ext_firecracker_r>N</ext_firecracker_r>
+        <firecracker_code></firecracker_code>
+        <ext_firecracker_sp></ext_firecracker_sp>
+        <ext_sexual>N</ext_sexual>
+        <ext_gun>Y</ext_gun>
+        <ext_gun_sp>MAGNUM 357 PISTOL</ext_gun_sp>
+        <ext_hang>N</ext_hang>
+        <ext_maul>N</ext_maul>
+        <ext_transport>N</ext_transport>
+        <ext_other>N</ext_other>
+        <ext_other_sp></ext_other_sp>
+        <vehicle_type_id>NULL</vehicle_type_id>
+        <ref_veh_acctype_code></ref_veh_acctype_code>
+        <vehicle_code></vehicle_code>
+        <pat_veh_sp></pat_veh_sp>
+        <etc_veh></etc_veh>
+        <etc_veh_sp></etc_veh_sp>
+        <position_code></position_code>
+        <pos_pat_sp></pos_pat_sp>
+        <place_occ_code>50</place_occ_code>
+        <poc_wp_spec></poc_wp_spec>
+        <poc_etc_spec></poc_etc_spec>
+        <activity_code>10</activity_code>
+        <act_etc_spec>act_etc_spec</act_etc_spec>
+        <risk_none>Y</risk_none>
+        <risk_alcliq>N</risk_alcliq>
+        <risk_sleep>N</risk_sleep>
+        <risk_smoke>N</risk_smoke>
+        <risk_mobpho>N</risk_mobpho>
+        <risk_other>N</risk_other>
+        <risk_etc_spec></risk_etc_spec>
+        <safe_none>Y</safe_none>
+        <safe_airbag>N</safe_airbag>
+        <safe_helmet>Y</safe_helmet>
+        <safe_cseat>N</safe_cseat>
+        <safe_sbelt>N</safe_sbelt>
+        <safe_unkn>N</safe_unkn>
+        <safe_drown>N</safe_drown>
+        <safe_other>N</safe_other>
+        <safe_other_sp></safe_other_sp>
+        <trans_ref>N</trans_ref>
+        <trans_ref2>N</trans_ref2>
+        <ref_hosp_code></ref_hosp_code>
+        <ref_hosp_code_sp></ref_hosp_code_sp>
+        <ref_physician></ref_physician>
+        <status_code>2</status_code>
+        <mode_transport_code>3</mode_transport_code>
+        <stat_reachdtl></stat_reachdtl>
+        <Diagnosis>GUN SHOT WOUND, POINT OF ENTRY SHOULDER, POINT OF EXIT BACK</Diagnosis>
+        <icd_10_nature_er></icd_10_nature_er>
+        <icd_10_external_er></icd_10_external_er>
+        <disposition_code>TRASH</disposition_code>
+        <disp_er_sp></disp_er_sp>
+        <disp_er_sp_oth></disp_er_sp_oth>
+        <outcome_code>10</outcome_code>
+        <complete_diagnosis></complete_diagnosis>
+        <disp_inpat></disp_inpat>
+        <disp_inpat_oth></disp_inpat_oth>
+        <disp_inpat_sp></disp_inpat_sp>
+        <disp_inpat_sp2></disp_inpat_sp2>
+        <outcome_inpat></outcome_inpat>
+        <icd10_nature_inpatient></icd10_nature_inpatient>
+        <icd_10_ext_inpatient></icd_10_ext_inpatient>
+        <comments></comments>
+        <fac_regno></fac_regno>
+        <upload></upload>
+        <class></class>
+        <pre_date></pre_date>
+        <pno>45</pno>
+      </Data>
+    </urn:pushInjuryData>
+  </soapenv:Body>
+</soapenv:Envelope>
+---

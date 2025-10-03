@@ -9,13 +9,12 @@ class Service
         $this->ensureDb();
     }
 
-    /**
-     * pushInjuryData
-     * @param array $Data Associative array of fields
-     * @return string XML response
-     */
+    // pushInjuryData: full schema validation
     public function pushInjuryData($params)
     {
+        // capture raw POST for debugging
+        $this->logRawRequest('pushInjuryData');
+
         $data = $this->normalizeData($params);
 
         $required = [
@@ -36,13 +35,10 @@ class Service
         return $resp;
     }
 
-    /**
-     * pushApirData
-     * @param array $Data Associative array of fields
-     * @return string XML response
-     */
+    // pushApirData: specific schema
     public function pushApirData($params)
     {
+        $this->logRawRequest('pushApirData');
         $data = $this->normalizeData($params);
 
         $required = [
@@ -65,13 +61,9 @@ class Service
         return $resp;
     }
 
-    /**
-     * webInjury
-     * @param array $Data Associative array of fields
-     * @return string XML response
-     */
     public function webInjury($params)
     {
+        $this->logRawRequest('webInjury');
         $data = $this->normalizeData($params);
         $inner = $this->arrayToXml($data);
         $resp = $this->makeResponse('104', 'Success', $inner);
@@ -108,33 +100,74 @@ class Service
         }
     }
 
-    // Helpers (unchanged except visibility)
+    // Helpers
     private function normalizeData($params)
     {
-        if (is_object($params) && property_exists($params, 'Data')) {
-            $raw = $params->Data;
-            if (is_object($raw)) {
-                return $this->objectToArray($raw);
-            }
-            if (is_array($raw)) {
-                return $raw;
-            }
-            if (is_string($raw)) {
-                $trim = trim($raw);
-                $json = json_decode($trim, true);
-                if (json_last_error() === JSON_ERROR_NONE) return $json;
-                if (strpos($trim, '<') !== false) {
-                    try {
-                        $xml = new SimpleXMLElement($trim);
-                        return json_decode(json_encode($xml), true);
-                    } catch (Exception $e) {}
-                }
-                return ['raw' => $raw];
-            }
+        // If SOAP provides a wrapper 'parameters' (some clients), unwrap it
+        if (is_object($params) && property_exists($params, 'parameters')) {
+            $params = $params->parameters;
         }
-        if (is_object($params)) return $this->objectToArray($params);
-        if (is_array($params)) return $params;
+
+        // If direct object with many properties (fields match WSDL), convert to array
+        if (is_object($params)) {
+            $arr = $this->objectToArray($params);
+            // If there is a 'Data' key inside, prefer its contents
+            if (isset($arr['Data'])) {
+                $dataCandidate = $arr['Data'];
+                if (is_array($dataCandidate) && count($dataCandidate) > 0) return $dataCandidate;
+                if (is_string($dataCandidate)) {
+                    $decoded = json_decode($dataCandidate, true);
+                    if (json_last_error() === JSON_ERROR_NONE) return $decoded;
+                }
+            }
+            // If object fields are the actual data (e.g., Pat_Facility_No is a property), return arr
+            // Filter out empty numeric keys
+            if (count($arr) > 0) return $arr;
+            return [];
+        }
+
+        // If array
+        if (is_array($params)) {
+            // If Data key exists and contains array or JSON string
+            if (isset($params['Data'])) {
+                $d = $params['Data'];
+                if (is_array($d)) return $d;
+                if (is_string($d)) {
+                    $json = json_decode($d, true);
+                    if (json_last_error() === JSON_ERROR_NONE) return $json;
+                    // attempt parse as XML
+                    if (strpos(trim($d), '<') === 0) {
+                        try { $xml = new SimpleXMLElement($d); return json_decode(json_encode($xml), true); } catch (Exception $e) {}
+                    }
+                    // otherwise return raw
+                    return ['raw' => $d];
+                }
+            }
+            return $params;
+        }
+
+        // If param was string (client sent a raw JSON or XML string)
+        if (is_string($params)) {
+            $trim = trim($params);
+            $json = json_decode($trim, true);
+            if (json_last_error() === JSON_ERROR_NONE) return $json;
+            if (strpos($trim, '<') !== false) {
+                try { $xml = new SimpleXMLElement($trim); return json_decode(json_encode($xml), true); } catch (Exception $e) {}
+            }
+            return ['raw' => $params];
+        }
+
         return [];
+    }
+
+    private function logRawRequest($operation)
+    {
+        $raw = @file_get_contents('php://input');
+        $dir = __DIR__ . '/data';
+        if (!is_dir($dir)) mkdir($dir, 0755, true);
+        $f = $dir . '/requests.log';
+        $entry = date('c') . " [{$operation}]\n" . ($raw ?: "(empty)") . "\n---\n";
+        @file_put_contents($f, $entry, FILE_APPEND | LOCK_EX);
     }
 
     private function objectToArray($obj)

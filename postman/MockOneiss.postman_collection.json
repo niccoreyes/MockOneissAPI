@@ -10,6 +10,7 @@
       "name": "pushInjuryData - full payload",
       "request": {
         "method": "POST",
+        "timeout": 30000,
         "header": [
           {
             "key": "Content-Type",
@@ -37,6 +38,7 @@
       "name": "pushApirData - full payload",
       "request": {
         "method": "POST",
+        "timeout": 30000,
         "header": [
           {
             "key": "Content-Type",
@@ -64,6 +66,7 @@
       "name": "webInjury - full payload",
       "request": {
         "method": "POST",
+        "timeout": 30000,
         "header": [
           {
             "key": "Content-Type",
