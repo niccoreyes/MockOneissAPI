@@ -3,7 +3,7 @@
 // Landing page + WSDL endpoint + SOAP POST handler + records viewer
 
 require __DIR__ . '/../../Service.php';
-$wsdlPath = __DIR__ . '/../wsdl/oneiss.wsdl';
+$wsdlPath = __DIR__ . '/../../wsdl/oneiss.wsdl';
 $dataFiles = [
     __DIR__ . '/../../../oneissWeb/oneiss-pushInjuryData.txt',
     __DIR__ . '/../../../oneissWeb/oneiss-pushApirData.txt'

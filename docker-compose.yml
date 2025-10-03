@@ -6,6 +6,11 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html:cached
+      - vendor:/var/www/html/vendor
     restart: unless-stopped
     environment:
       - PHP_OPCACHE_VALIDATE_TIMESTAMPS=1
+
+volumes:
+  vendor:
+    driver: local

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:webInjury>
+      <Data>
+        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
+        <Status>E</Status>
+        <rstatuscode>V</rstatuscode>
+        <date_report>2016-03-29</date_report>
+        <time_report>08:30:00</time_report>
+        <reg_no>NM201600100001</reg_no>
+        <tempreg_no>TN0000000100001</tempreg_no>
+        <hosp_no>1065</hosp_no>
+        <ptype_code>i</ptype_code>
+        <Pat_Last_Name>Platon</Pat_Last_Name>
+        <Pat_First_Name>Jonathan</Pat_First_Name>
+        <Pat_Middle_Name>Elec</Pat_Middle_Name>
+        <Pat_Sex>M</Pat_Sex>
+        <pno>45</pno>
+      </Data>
+    </urn:webInjury>
+  </soapenv:Body>
+</soapenv:Envelope>
