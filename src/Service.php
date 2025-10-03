@@ -2,6 +2,7 @@
 class Service
 {
     private $dbFile;
+    private static $lastRawRequest = null;
 
     public function __construct()
     {
@@ -103,6 +104,27 @@ class Service
     // Helpers
     private function normalizeData($params)
     {
+        // If a raw request was stored, try parsing it first (covers cases where SoapServer mapping varies)
+        if (!empty(self::$lastRawRequest)) {
+            $raw = self::$lastRawRequest;
+            try {
+                $xmlRoot = new SimpleXMLElement($raw);
+                $nodes = $xmlRoot->xpath('//*[local-name()="Data"]');
+                if ($nodes && count($nodes) > 0) {
+                    $node = $nodes[0];
+                    $nodeJson = json_decode(json_encode($node), true);
+                    if (is_array($nodeJson) && count($nodeJson) > 0) return $nodeJson;
+                    $text = trim((string)$node);
+                    if ($text !== '') {
+                        $j = json_decode($text, true);
+                        if (json_last_error() === JSON_ERROR_NONE) return $j;
+                    }
+                }
+            } catch (Exception $e) {
+                // ignore parse errors and continue
+            }
+        }
+
         // If SOAP provides a wrapper 'parameters' (some clients), unwrap it
         if (is_object($params) && property_exists($params, 'parameters')) {
             $params = $params->parameters;
@@ -154,6 +176,27 @@ class Service
             if (strpos($trim, '<') !== false) {
                 try { $xml = new SimpleXMLElement($trim); return json_decode(json_encode($xml), true); } catch (Exception $e) {}
             }
+            // Fallback: try to parse raw HTTP body for a <Data> element if previous logic returned empty
+            $rawInput = self::$lastRawRequest ?: @file_get_contents('php://input');
+            if ($rawInput) {
+                try {
+                    $xmlRoot = new SimpleXMLElement($rawInput);
+                    $nodes = $xmlRoot->xpath('//*[local-name()="Data"]');
+                    if ($nodes && count($nodes) > 0) {
+                        $node = $nodes[0];
+                        $nodeJson = json_decode(json_encode($node), true);
+                        if (is_array($nodeJson) && count($nodeJson) > 0) return $nodeJson;
+                        $text = trim((string)$node);
+                        if ($text !== '') {
+                            $j = json_decode($text, true);
+                            if (json_last_error() === JSON_ERROR_NONE) return $j;
+                        }
+                    }
+                } catch (Exception $e) {
+                    // ignore
+                }
+            }
+
             return ['raw' => $params];
         }
 
@@ -163,6 +206,8 @@ class Service
     private function logRawRequest($operation)
     {
         $raw = @file_get_contents('php://input');
+        // store for reuse (php://input can be read only once)
+        self::$lastRawRequest = $raw;
         $dir = __DIR__ . '/data';
         if (!is_dir($dir)) mkdir($dir, 0755, true);
         $f = $dir . '/requests.log';
