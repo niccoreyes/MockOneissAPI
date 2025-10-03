@@ -2,11 +2,12 @@
 BASE=${1:-http://localhost:8080}
 REQ1=src/request-samples/pushInjuryData.xml
 REQ2=src/request-samples/pushApirData.xml
+REQ3=src/request-samples/webInjury.xml
 
 run() {
   local req=$1
-  echo "POST $BASE/index.php with $req"
-  resp=$(curl -s -H "Content-Type: text/xml;charset=UTF-8" --data-binary @"$req" "$BASE/index.php")
+  echo "POST $BASE/webservice/index.php with $req"
+  resp=$(curl -s -H "Content-Type: text/xml;charset=UTF-8" --data-binary @"$req" "$BASE/webservice/index.php")
 
   if [ -z "$resp" ]; then
     echo "Empty response"
@@ -62,9 +63,10 @@ PY
 
 run "$REQ1"; rc1=$?
 run "$REQ2"; rc2=$?
+run "$REQ3"; rc3=$?
 
-echo "Summary: pushInjuryData=$rc1 pushApirData=$rc2"
-if [ $rc1 -ne 0 -o $rc2 -ne 0 ]; then
+echo "Summary: pushInjuryData=$rc1 pushApirData=$rc2 webInjury=$rc3"
+if [ $rc1 -ne 0 -o $rc2 -ne 0 -o $rc3 -ne 0 ]; then
   exit 1
 else
   exit 0

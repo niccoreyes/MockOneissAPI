@@ -1,0 +1,119 @@
+<definitions
+	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:tns="oneiss.doh.gov.ph/webservice/index.php?wsdl"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="oneiss.doh.gov.ph/webservice/index.php?wsdl">
+	<types>
+		<xsd:schema targetNamespace="oneiss.doh.gov.ph/webservice/index.php?wsdl">
+			<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+		</xsd:schema>
+	</types>
+	<message name="oneissRequest"/>
+	<message name="oneissResponse">
+		<part name="return" type="xsd:string"/>
+	</message>
+	<message name="pushInjuryDataRequest">
+		<part name="Data" type="xsd:string"/>
+	</message>
+	<message name="pushInjuryDataResponse">
+		<part name="Return" type="xsd:string"/>
+	</message>
+	<message name="pushApirDataRequest">
+		<part name="Data" type="xsd:string"/>
+	</message>
+	<message name="pushApirDataResponse">
+		<part name="Return" type="xsd:string"/>
+	</message>
+	<message name="webInjuryRequest">
+		<part name="Data" type="xsd:string"/>
+	</message>
+	<message name="webInjuryResponse">
+		<part name="Return" type="xsd:string"/>
+	</message>
+	<message name="DataSelectRequest">
+		<part name="Data" type="xsd:string"/>
+	</message>
+	<message name="DataSelectResponse">
+		<part name="Return" type="xsd:string"/>
+	</message>
+	<portType name="Online National Electronic Surveillance SystemPortType">
+		<operation name="oneiss">
+			<input message="tns:oneissRequest"/>
+			<output message="tns:oneissResponse"/>
+		</operation>
+		<operation name="pushInjuryData">
+			<input message="tns:pushInjuryDataRequest"/>
+			<output message="tns:pushInjuryDataResponse"/>
+		</operation>
+		<operation name="pushApirData">
+			<input message="tns:pushApirDataRequest"/>
+			<output message="tns:pushApirDataResponse"/>
+		</operation>
+		<operation name="webInjury">
+			<input message="tns:webInjuryRequest"/>
+			<output message="tns:webInjuryResponse"/>
+		</operation>
+		<operation name="DataSelect">
+			<input message="tns:DataSelectRequest"/>
+			<output message="tns:DataSelectResponse"/>
+		</operation>
+	</portType>
+	<binding name="Online National Electronic Surveillance SystemBinding" type="tns:Online National Electronic Surveillance SystemPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="oneiss">
+			<soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/oneiss" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="pushInjuryData">
+			<soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/pushInjuryData" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="pushApirData">
+			<soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/pushApirData" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="webInjury">
+			<soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/webInjury" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="DataSelect">
+			<soap:operation soapAction="https://oneiss.doh.gov.ph/webservice/index.php/DataSelect" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="oneiss.doh.gov.ph/webservice/index.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="Online National Electronic Surveillance System">
+		<port name="Online National Electronic Surveillance SystemPort" binding="tns:Online National Electronic Surveillance SystemBinding">
+			<soap:address location="https://oneiss.doh.gov.ph:443/webservice/index.php"/>
+		</port>
+	</service>
+</definitions>

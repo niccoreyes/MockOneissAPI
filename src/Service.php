@@ -10,6 +10,15 @@ class Service
         $this->ensureDb();
     }
 
+    // Health/ping per official WSDL (no parameters)
+    public function oneiss()
+    {
+        $this->logRawRequest('oneiss');
+        $resp = $this->makeResponse('104', 'OK');
+        $this->persistRecord('oneiss', [], $resp);
+        return $resp;
+    }
+
     // pushInjuryData: full schema validation
     public function pushInjuryData($params)
     {
@@ -69,6 +78,17 @@ class Service
         $inner = $this->arrayToXml($data);
         $resp = $this->makeResponse('104', 'Success', $inner);
         $this->persistRecord('webInjury', $data, $resp);
+        return $resp;
+    }
+
+    // DataSelect per official WSDL (single string param Data)
+    public function DataSelect($params)
+    {
+        $this->logRawRequest('DataSelect');
+        $data = $this->normalizeData($params);
+        $inner = $this->arrayToXml(['criteria' => $data]);
+        $resp = $this->makeResponse('104', 'Success', $inner);
+        $this->persistRecord('DataSelect', $data, $resp);
         return $resp;
     }
 

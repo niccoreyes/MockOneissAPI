@@ -57,7 +57,7 @@ if ($view === 'records') {
 
 // If POST => treat as SOAP POST to this endpoint
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Handle SOAP POST using WSDL in wsdlPath
+    // Handle SOAP POST using WSDL in wsdlPath (RPC/encoded per official ONEISS WSDL)
     ini_set('soap.wsdl_cache_enabled', '0');
     try {
         $server = new SoapServer($wsdlPath);
@@ -71,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Otherwise render landing page with API docs and per-field descriptions
 function parseFieldTable($file)
 {
     if (!is_readable($file)) return [];
@@ -115,23 +114,52 @@ $apirFields = parseFieldTable($dataFiles[1]);
     a{color:#0066cc}
     table{border-collapse:collapse;width:100%}
     th,td{border:1px solid #eee;padding:8px;text-align:left}
+    .note{font-size:13px;color:#444}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Mock OneISS - Web Service</h1>
-      <div>Path: /webservice/ &nbsp; — &nbsp; This mock provides a WSDL and mock SOAP operations that mirror the OneISS API.</div>
+      <div>Path: /webservice/ — This mock now serves the official ONEISS WSDL (RPC/encoded, single string parameter <code>Data</code>).</div>
+      <div class="note">WSDL: <a href="/webservice/index.php?wsdl">/webservice/index.php?wsdl</a> · SOAP endpoint (POST): <code>/webservice/index.php</code> · Records: <a href="/webservice/admin.php">Admin</a></div>
     </header>
 
     <section class="card">
-      <h2>Service endpoints</h2>
+      <h2>About the WSDL</h2>
+      <p>The official ONEISS WSDL defines RPC/encoded operations where each method takes a single <code>Data</code> parameter of type <code>xsd:string</code> and returns a string. This mock accepts either:</p>
       <ul>
-        <li>WSDL: <a href="/webservice/index.php?wsdl">/webservice/index.php?wsdl</a></li>
-        <li>Auto-generated WSDL (laminas AutoDiscover): <a href="/webservice/autodiscover.php?wsdl">/webservice/autodiscover.php?wsdl</a></li>
-        <li>SOAP endpoint: <code>/webservice/index.php</code> (POST SOAP)</li>
-        <li>Records viewer: <a href="/webservice/index.php?view=records">/webservice/index.php?view=records</a></li>
+        <li>WSDL-compliant string payloads (e.g., JSON or XML inside <code>Data</code>, often wrapped in CDATA)</li>
+        <li>Convenience structured XML inside <code>&lt;Data&gt;...&lt;/Data&gt;</code> for local testing</li>
       </ul>
+    </section>
+
+    <section class="card" id="samples">
+      <h2>Samples</h2>
+      <h3>WSDL-compliant (string) — pushApirData</h3>
+      <pre><?php echo htmlentities('<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="oneiss.doh.gov.ph/webservice/index.php?wsdl">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushApirData>
+      <Data><![CDATA[{"Pat_Facility_No":"DOH000000000000877","reg_no":"NM201600100001","inj_date":"2016-03-30","inj_time":"07:38:02","Pat_Last_Name":"Platon","Pat_First_Name":"Jonathan","Pat_Middle_Name":"Elec","Pat_Sex":"M","Pat_Current_Address_StreetName":"main street","Pat_Current_Address_Region":"04","Pat_Current_Address_Province":"0434","Pat_Current_Address_City":"043411","involve_code":"10","typeof_injurycode":"10","diagnosis":"INGESTION","liquor":"Y","disposition_code":"TRASH"}]]></Data>
+    </urn:pushApirData>
+  </soapenv:Body>
+</soapenv:Envelope>'); ?></pre>
+
+      <h3>WSDL-compliant (string) — pushInjuryData</h3>
+      <pre><?php echo htmlentities('<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="oneiss.doh.gov.ph/webservice/index.php?wsdl">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:pushInjuryData>
+      <Data><![CDATA[{"Pat_Facility_No":"DOH000000000000877","Status":"E","rstatuscode":"V","date_report":"2016-03-29","time_report":"08:30:00","reg_no":"NM201600100001","tempreg_no":"TN0000000100001","hosp_no":"1065","hosp_reg_no":"1445","hosp_cas_no":"1926","ptype_code":"i"}]]></Data>
+    </urn:pushInjuryData>
+  </soapenv:Body>
+</soapenv:Envelope>'); ?></pre>
+
+      <h3>Convenience (structured XML) — webInjury</h3>
+      <pre><?php echo htmlentities(file_get_contents(__DIR__ . '/../../request-samples/webInjury.xml')); ?></pre>
     </section>
 
     <section class="card">
@@ -139,9 +167,9 @@ $apirFields = parseFieldTable($dataFiles[1]);
       <table>
         <thead><tr><th>Operation</th><th>Description</th><th>Sample</th></tr></thead>
         <tbody>
-          <tr><td>pushInjuryData</td><td>Submit injury case data (full payload).</td><td><a href="#pushInjurySample">sample</a></td></tr>
-          <tr><td>pushApirData</td><td>Submit APIR/sentinel event data.</td><td><a href="#pushApirSample">sample</a></td></tr>
-          <tr><td>webInjury</td><td>Alternate entry for injury data.</td><td><a href="#webInjurySample">sample</a></td></tr>
+          <tr><td>pushInjuryData</td><td>Submit injury case data.</td><td><a href="#samples">see above</a></td></tr>
+          <tr><td>pushApirData</td><td>Submit APIR/sentinel event data.</td><td><a href="#samples">see above</a></td></tr>
+          <tr><td>webInjury</td><td>Alternate entry for injury data.</td><td><a href="#samples">see above</a></td></tr>
         </tbody>
       </table>
     </section>
@@ -178,60 +206,6 @@ $apirFields = parseFieldTable($dataFiles[1]);
           </tbody>
         </table>
       <?php endif; ?>
-    </section>
-
-    <section class="card" id="pushInjurySample">
-      <h3>pushInjuryData — sample SOAP request</h3>
-      <p>POST to <code>/webservice/index.php</code> with header <code>Content-Type: text/xml;charset=UTF-8</code></p>
-      <pre><?php echo htmlentities('<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
-  <soapenv:Header/>
-  <soapenv:Body>
-    <urn:pushInjuryData>
-      <Data>
-        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
-        <Status>E</Status>
-        <rstatuscode>V</rstatuscode>
-        <date_report>2016-03-29</date_report>
-        <time_report>08:30:00</time_report>
-        <!-- ... many other fields ... -->
-      </Data>
-    </urn:pushInjuryData>
-  </soapenv:Body>
-</soapenv:Envelope>'); ?></pre>
-    </section>
-
-    <section class="card" id="pushApirSample">
-      <h3>pushApirData — sample SOAP request</h3>
-      <pre><?php echo htmlentities('<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
-  <soapenv:Header/>
-  <soapenv:Body>
-    <urn:pushApirData>
-      <Data>
-        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
-        <reg_no>NM201600100001</reg_no>
-        <!-- ... many other fields ... -->
-      </Data>
-    </urn:pushApirData>
-  </soapenv:Body>
-</soapenv:Envelope>'); ?></pre>
-    </section>
-
-    <section class="card" id="webInjurySample">
-      <h3>webInjury — sample SOAP request</h3>
-      <pre><?php echo htmlentities('<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="http://oneiss.doh.gov.ph/webservice">
-  <soapenv:Header/>
-  <soapenv:Body>
-    <urn:webInjury>
-      <Data>
-        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>
-        <!-- ... -->
-      </Data>
-    </urn:webInjury>
-  </soapenv:Body>
-</soapenv:Envelope>'); ?></pre>
     </section>
 
     <footer style="margin-top:18px;color:#666;font-size:13px">Mock OneISS &copy; <?php echo date('Y'); ?> — For local testing only</footer>

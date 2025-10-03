@@ -1,17 +1,24 @@
 param(
     [string]$BaseUrl = 'http://localhost:8080',
-    [string]$RequestFile = "$PSScriptRoot\..\src\request-samples\pushApirData.xml"
+    [string]$RegNo = 'NM201600100001'
 )
 
 $uri = "$BaseUrl/webservice/index.php"
-Write-Host "POST $uri with $RequestFile"
+Write-Host "POST $uri (DataSelect)"
 
-try {
-    $body = Get-Content -Raw -Path $RequestFile
-} catch {
-    Write-Host "Cannot read request file: $_"
-    exit 2
-}
+$json = '{"reg_no":"' + $RegNo + '","date_from":"2016-03-01","date_to":"2016-03-31"}'
+$escaped = $json # already JSON; embedding in CDATA
+$body = @"
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="oneiss.doh.gov.ph/webservice/index.php?wsdl">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <urn:DataSelect>
+      <Data><![CDATA[$escaped]]></Data>
+    </urn:DataSelect>
+  </soapenv:Body>
+</soapenv:Envelope>
+"@
 
 try {
     $resp = Invoke-WebRequest -Uri $uri -Method Post -ContentType 'text/xml;charset=UTF-8' -Body $body -UseBasicParsing -TimeoutSec 30

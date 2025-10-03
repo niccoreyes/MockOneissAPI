@@ -3,7 +3,7 @@ param(
     [string]$RequestFile = "$PSScriptRoot\..\src\request-samples\pushInjuryData.xml"
 )
 
-$uri = "$BaseUrl/index.php"
+$uri = "$BaseUrl/webservice/index.php"
 Write-Host "POST $uri with $RequestFile"
 
 try {

@@ -1,13 +1,37 @@
 {
   "info": {
-    "name": "MockONEISS API - Postman",
+    "name": "MockONEISS API - Postman (Official WSDL)",
     "_postman_id": "1d6b8c66-0000-4000-8000-000000000000",
-    "description": "Collection for testing the local mock ONEISS SOAP API (full field payloads)",
+    "description": "Collection for testing the local mock ONEISS SOAP API using the official RPC/encoded WSDL (single xsd:string parameter named Data).",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "pushInjuryData - full payload",
+      "name": "WSDL - download",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/webservice/index.php?wsdl",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "webservice",
+            "index.php"
+          ],
+          "query": [
+            {
+              "key": "wsdl",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "oneiss (ping)",
       "request": {
         "method": "POST",
         "timeout": 30000,
@@ -19,7 +43,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"http://oneiss.doh.gov.ph/webservice\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:pushInjuryData>\n      <Data>\n        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>\n        <Status>E</Status>\n        <rstatuscode>V</rstatuscode>\n        <date_report>2016-03-29</date_report>\n        <time_report>08:30:00</time_report>\n        <reg_no>NM201600100001</reg_no>\n        <tempreg_no>TN0000000100001</tempreg_no>\n        <hosp_no>1065</hosp_no>\n        <hosp_reg_no></hosp_reg_no>\n        <hosp_cas_no></hosp_cas_no>\n        <ptype_code>i</ptype_code>\n        <Pat_Last_Name>Platon</Pat_Last_Name>\n        <Pat_First_Name>Jonathan</Pat_First_Name>\n        <Pat_Middle_Name>Elec</Pat_Middle_Name>\n        <Pat_Sex>M</Pat_Sex>\n        <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>\n        <Pat_Current_Address_Region>04</Pat_Current_Address_Region>\n        <Pat_Current_Address_Province>0434</Pat_Current_Address_Province>\n        <Pat_Current_Address_City>043411</Pat_Current_Address_City>\n        <temp_regcode>04</temp_regcode>\n        <temp_provcode>0434</temp_provcode>\n        <temp_citycode>043411</temp_citycode>\n        <Age_Years>23</Age_Years>\n        <Age_Month>11</Age_Month>\n        <Age_Day>5</Age_Day>\n        <Pat_Phil_Health_No>20263849249</Pat_Phil_Health_No>\n        <plc_regcode>04</plc_regcode>\n        <plc_provcode>0434</plc_provcode>\n        <plc_ctycode>043411</plc_ctycode>\n        <inj_date>2016-03-30 00:00:00</inj_date>\n        <inj_time>07:38:02</inj_time>\n        <Encounter_Date>2016-03-30 00:00:00</Encounter_Date>\n        <Encounter_Time>08:27:25</Encounter_Time>\n        <inj_intent_code>1</inj_intent_code>\n        <first_aid_code>N</first_aid_code>\n        <firstaid_others></firstaid_others>\n        <firstaid_others2></firstaid_others2>\n        <mult_inj>N</mult_inj>\n        <noi_abrasion>N</noi_abrasion>\n        <noi_abradtl></noi_abradtl>\n        <noi_avulsion>N</noi_avulsion>\n        <noi_avuldtl></noi_avuldtl>\n        <noi_burn_r>N</noi_burn_r>\n        <noi_burn1>N</noi_burn1>\n        <noi_burn2>N</noi_burn2>\n        <noi_burn3>N</noi_burn3>\n        <noi_burn4>N</noi_burn4>\n        <noi_burndtl></noi_burndtl>\n        <noi_concussion>N</noi_concussion>\n        <noi_concussiondtl></noi_concussiondtl>\n        <noi_contusion>N</noi_contusion>\n        <noi_contudtl></noi_contudtl>\n        <noi_frac_clo>N</noi_frac_clo>\n        <noi_frcldtl></noi_frcldtl>\n        <noi_frac_ope>N</noi_frac_ope>\n        <noi_fropdtl></noi_fropdtl>\n        <noi_owound>N</noi_owound>\n        <noi_owoudtl></noi_owoudtl>\n        <noi_amp>N</noi_amp>\n        <noi_ampdtl></noi_ampdtl>\n        <noi_others>N</noi_others>\n        <noi_otherinj></noi_otherinj>\n        <ext_bite>N</ext_bite>\n        <ext_bite_sp></ext_bite_sp>\n        <ext_burn_r>N</ext_burn_r>\n        <ref_burn_code></ref_burn_code>\n        <ext_burn_sp></ext_burn_sp>\n        <ext_chem>N</ext_chem>\n        <ext_chem_sp></ext_chem_sp>\n        <ext_sharp>N</ext_sharp>\n        <ext_sharp_sp></ext_sharp_sp>\n        <ext_drown_r>N</ext_drown_r>\n        <ref_drowning_cope></ref_drowning_cope>\n        <ext_drown_sp></ext_drown_sp>\n        <ext_expo_nature_r>N</ext_expo_nature_r>\n        <ref_expnature_code></ref_expnature_code>\n        <ext_expo_nature_sp></ext_expo_nature_sp>\n        <ext_fall>N</ext_fall>\n        <ext_falldtl></ext_falldtl>\n        <ext_firecracker_r>N</ext_firecracker_r>\n        <firecracker_code></firecracker_code>\n        <ext_firecracker_sp></ext_firecracker_sp>\n        <ext_sexual>N</ext_sexual>\n        <ext_gun>Y</ext_gun>\n        <ext_gun_sp>MAGNUM 357 PISTOL</ext_gun_sp>\n        <ext_hang>N</ext_hang>\n        <ext_maul>N</ext_maul>\n        <ext_transport>N</ext_transport>\n        <ext_other>N</ext_other>\n        <ext_other_sp></ext_other_sp>\n        <vehicle_type_id>NULL</vehicle_type_id>\n        <ref_veh_acctype_code></ref_veh_acctype_code>\n        <vehicle_code></vehicle_code>\n        <pat_veh_sp></pat_veh_sp>\n        <etc_veh></etc_veh>\n        <etc_veh_sp></etc_veh_sp>\n        <position_code></position_code>\n        <pos_pat_sp></pos_pat_sp>\n        <place_occ_code>50</place_occ_code>\n        <poc_wp_spec></poc_wp_spec>\n        <poc_etc_spec></poc_etc_spec>\n        <activity_code>10</activity_code>\n        <act_etc_spec>act_etc_spec</act_etc_spec>\n        <risk_none>Y</risk_none>\n        <risk_alcliq>N</risk_alcliq>\n        <risk_sleep>N</risk_sleep>\n        <risk_smoke>N</risk_smoke>\n        <risk_mobpho>N</risk_mobpho>\n        <risk_other>N</risk_other>\n        <risk_etc_spec></risk_etc_spec>\n        <safe_none>Y</safe_none>\n        <safe_airbag>N</safe_airbag>\n        <safe_helmet>Y</safe_helmet>\n        <safe_cseat>N</safe_cseat>\n        <safe_sbelt>N</safe_sbelt>\n        <safe_unkn>N</safe_unkn>\n        <safe_drown>N</safe_drown>\n        <safe_other>N</safe_other>\n        <safe_other_sp></safe_other_sp>\n        <trans_ref>N</trans_ref>\n        <trans_ref2>N</trans_ref2>\n        <ref_hosp_code></ref_hosp_code>\n        <ref_hosp_code_sp></ref_hosp_code_sp>\n        <ref_physician></ref_physician>\n        <status_code>2</status_code>\n        <mode_transport_code>3</mode_transport_code>\n        <stat_reachdtl></stat_reachdtl>\n        <Diagnosis>GUN SHOT WOUND, POINT OF ENTRY SHOULDER, POINT OF EXIT BACK</Diagnosis>\n        <icd_10_nature_er></icd_10_nature_er>\n        <icd_10_external_er></icd_10_external_er>\n        <disposition_code>TRASH</disposition_code>\n        <disp_er_sp></disp_er_sp>\n        <disp_er_sp_oth></disp_er_sp_oth>\n        <outcome_code>10</outcome_code>\n        <complete_diagnosis></complete_diagnosis>\n        <disp_inpat></disp_inpat>\n        <disp_inpat_oth></disp_inpat_oth>\n        <disp_inpat_sp></disp_inpat_sp>\n        <disp_inpat_sp2></disp_inpat_sp2>\n        <outcome_inpat></outcome_inpat>\n        <icd10_nature_inpatient></icd10_nature_inpatient>\n        <icd_10_ext_inpatient></icd_10_ext_inpatient>\n        <comments></comments>\n        <fac_regno></fac_regno>\n        <upload></upload>\n        <class></class>\n        <pre_date></pre_date>\n        <pno>45</pno>\n      </Data>\n    </urn:pushInjuryData>\n  </soapenv:Body>\n</soapenv:Envelope>"
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"oneiss.doh.gov.ph/webservice/index.php?wsdl\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:oneiss/>\n  </soapenv:Body>\n</soapenv:Envelope>"
         },
         "url": {
           "raw": "{{base_url}}/webservice/index.php",
@@ -35,7 +59,7 @@
       "response": []
     },
     {
-      "name": "pushApirData - full payload",
+      "name": "pushInjuryData (Data as string)",
       "request": {
         "method": "POST",
         "timeout": 30000,
@@ -47,7 +71,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"http://oneiss.doh.gov.ph/webservice\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:pushApirData>\n      <Data>\n        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>\n        <reg_no>NM201600100001</reg_no>\n        <tempreg_no>TN0000000100001</tempreg_no>\n        <sentinel></sentinel>\n        <date_report>2016-03-29</date_report>\n        <time_report>08:30:00</time_report>\n        <Pat_Last_Name>Platon</Pat_Last_Name>\n        <Pat_First_Name>Jonathan</Pat_First_Name>\n        <Pat_Middle_Name>Elec</Pat_Middle_Name>\n        <Pat_Suffix></Pat_Suffix>\n        <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>\n        <Age_Years>23</Age_Years>\n        <Age_Months>11</Age_Months>\n        <Age_Days>5</Age_Days>\n        <Pat_Sex>M</Pat_Sex>\n        <Pat_Current_Address_StreetName>main street</Pat_Current_Address_StreetName>\n        <Pat_Current_Address_Region>04</Pat_Current_Address_Region>\n        <Pat_Current_Address_Province>0434</Pat_Current_Address_Province>\n        <Pat_Current_Address_City>043411</Pat_Current_Address_City>\n        <Pat_Current_Address_Barangay>043411001</Pat_Current_Address_Barangay>\n        <telephone_no>86517811</telephone_no>\n        <four_ps_member>Y</four_ps_member>\n        <inj_date>2016-03-30 00:00:00</inj_date>\n        <inj_time>07:38:02</inj_time>\n        <plc_pat_str>main street</plc_pat_str>\n        <poi_sameadd>Y</poi_sameadd>\n        <poi_regcode>04</poi_regcode>\n        <poi_provcode>0434</poi_provcode>\n        <poi_citycode>043411</poi_citycode>\n        <poi_bgycode>043411001</poi_bgycode>\n        <place_of_occurence>1</place_of_occurence>\n        <place_of_occurence_others></place_of_occurence_others>\n        <Encounter_Date>2016-03-30 00:00:00</Encounter_Date>\n        <Encounter_Time>07:38:02</Encounter_Time>\n        <referral>Y</referral>\n        <reffered_from></reffered_from>\n        <involve_code>10</involve_code>\n        <typeof_injurycode>10</typeof_injurycode>\n        <injury_type_others></injury_type_others>\n        <mult_inj>N</mult_inj>\n        <if_fireworks_related>Y</if_fireworks_related>\n        <if_fireworks_related_2>N</if_fireworks_related_2>\n        <if_fireworks_related_3>N</if_fireworks_related_3>\n        <diagnosis>INGESTION</diagnosis>\n        <analoc_eye>Y</analoc_eye>\n        <analoc_head>N</analoc_head>\n        <analoc_neck>N</analoc_neck>\n        <analoc_chest>N</analoc_chest>\n        <analoc_back>N</analoc_back>\n        <analoc_abdomen>N</analoc_abdomen>\n        <analoc_buttocks>N</analoc_buttocks>\n        <analoc_hand>N</analoc_hand>\n        <analoc_forearmarm>N</analoc_forearmarm>\n        <analoc_pelvic>N</analoc_pelvic>\n        <analoc_thigh>N</analoc_thigh>\n        <analoc_knee>N</analoc_knee>\n        <analoc_legs>N</analoc_legs>\n        <analoc_foot>N</analoc_foot>\n        <firecracker_code>10</firecracker_code>\n        <firecracker_others></firecracker_others>\n        <firecracker_legality>2</firecracker_legality>\n        <liquor>Y</liquor>\n        <treatment_code>Y</treatment_code>\n        <treatment_code2>Y</treatment_code2>\n        <treatment_code3>N</treatment_code3>\n        <given_others></given_others>\n        <disposition_code>TRASH</disposition_code>\n        <transferred_to></transferred_to>\n        <transferred_to_sp></transferred_to_sp>\n        <outcome_code>1</outcome_code>\n        <date_died></date_died>\n        <aware>Y</aware>\n        <educ_material>1,2</educ_material>\n        <fac_regno>DOH000000000000877</fac_regno>\n        <Facility_Reg>04</Facility_Reg>\n        <Facility_Prov>0434</Facility_Prov>\n        <Facility_CityMun>043411</Facility_CityMun>\n      </Data>\n    </urn:pushApirData>\n  </soapenv:Body>\n</soapenv:Envelope>"
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"oneiss.doh.gov.ph/webservice/index.php?wsdl\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:pushInjuryData>\n      <Data><![CDATA[{\"Pat_Facility_No\":\"DOH000000000000877\",\"Status\":\"E\",\"rstatuscode\":\"V\",\"date_report\":\"2016-03-29\",\"time_report\":\"08:30:00\",\"reg_no\":\"NM201600100001\",\"tempreg_no\":\"TN0000000100001\",\"hosp_no\":\"1065\",\"hosp_reg_no\":\"1445\",\"hosp_cas_no\":\"1926\",\"ptype_code\":\"i\"}]]></Data>\n    </urn:pushInjuryData>\n  </soapenv:Body>\n</soapenv:Envelope>"
         },
         "url": {
           "raw": "{{base_url}}/webservice/index.php",
@@ -63,7 +87,7 @@
       "response": []
     },
     {
-      "name": "webInjury - full payload",
+      "name": "pushApirData (Data as string)",
       "request": {
         "method": "POST",
         "timeout": 30000,
@@ -75,7 +99,63 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"http://oneiss.doh.gov.ph/webservice\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:webInjury>\n      <Data>\n        <Pat_Facility_No>DOH000000000000877</Pat_Facility_No>\n        <Status>E</Status>\n        <rstatuscode>V</rstatuscode>\n        <date_report>2016-03-29</date_report>\n        <time_report>08:30:00</time_report>\n        <reg_no>NM201600100001</reg_no>\n        <tempreg_no>TN0000000100001</tempreg_no>\n        <hosp_no>1065</hosp_no>\n        <hosp_reg_no></hosp_reg_no>\n        <hosp_cas_no></hosp_cas_no>\n        <ptype_code>i</ptype_code>\n        <Pat_Last_Name>Platon</Pat_Last_Name>\n        <Pat_First_Name>Jonathan</Pat_First_Name>\n        <Pat_Middle_Name>Elec</Pat_Middle_Name>\n        <Pat_Sex>M</Pat_Sex>\n        <Pat_Date_of_Birth>1988-10-06</Pat_Date_of_Birth>\n        <Age_Years>23</Age_Years>\n        <pno>45</pno>\n      </Data>\n    </urn:webInjury>\n  </soapenv:Body>\n</soapenv:Envelope>"
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"oneiss.doh.gov.ph/webservice/index.php?wsdl\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:pushApirData>\n      <Data><![CDATA[{\"Pat_Facility_No\":\"DOH000000000000877\",\"reg_no\":\"NM201600100001\",\"tempreg_no\":\"TN0000000100001\",\"sentinel\":[],\"date_report\":\"2016-03-29\",\"time_report\":\"08:30:00\",\"Pat_Last_Name\":\"Platon\",\"Pat_First_Name\":\"Jonathan\",\"Pat_Middle_Name\":\"Elec\",\"Pat_Suffix\":[],\"Pat_Date_of_Birth\":\"1988-10-06\",\"Age_Years\":\"23\",\"Age_Months\":\"11\",\"Age_Days\":\"5\",\"Pat_Sex\":\"M\",\"Pat_Current_Address_StreetName\":\"main street\",\"Pat_Current_Address_Region\":\"04\",\"Pat_Current_Address_Province\":\"0434\",\"Pat_Current_Address_City\":\"043411\",\"Pat_Current_Address_Barangay\":\"043411001\",\"telephone_no\":\"86517811\",\"four_ps_member\":\"Y\",\"inj_date\":\"2016-03-30\",\"inj_time\":\"07:38:02\",\"plc_pat_str\":\"main street\",\"poi_sameadd\":\"Y\",\"poi_regcode\":\"04\",\"poi_provcode\":\"0434\",\"poi_citycode\":\"043411\",\"poi_bgycode\":\"043411001\",\"place_of_occurence\":\"1\",\"place_of_occurence_others\":[],\"Encounter_Date\":\"2016-03-30\",\"Encounter_Time\":\"07:38:02\",\"referral\":\"Y\",\"reffered_from\":[],\"involve_code\":\"10\",\"typeof_injurycode\":\"10\",\"injury_type_others\":[],\"mult_inj\":\"N\",\"if_fireworks_related\":\"Y\",\"if_fireworks_related_2\":\"N\",\"if_fireworks_related_3\":\"N\",\"diagnosis\":\"INGESTION\",\"analoc_eye\":\"Y\",\"analoc_head\":\"N\",\"analoc_neck\":\"N\",\"analoc_chest\":\"N\",\"analoc_back\":\"N\",\"analoc_abdomen\":\"N\",\"analoc_buttocks\":\"N\",\"analoc_hand\":\"N\",\"analoc_forearmarm\":\"N\",\"analoc_pelvic\":\"N\",\"analoc_thigh\":\"N\",\"analoc_knee\":\"N\",\"analoc_legs\":\"N\",\"analoc_foot\":\"N\",\"firecracker_code\":\"10\",\"firecracker_others\":[],\"firecracker_legality\":\"2\",\"liquor\":\"Y\",\"treatment_code\":\"Y\",\"treatment_code2\":\"Y\",\"treatment_code3\":\"N\",\"given_others\":[],\"disposition_code\":\"TRASH\",\"transferred_to\":[],\"transferred_to_sp\":[],\"outcome_code\":\"1\",\"date_died\":[],\"aware\":\"Y\",\"educ_material\":\"1,2\",\"fac_regno\":\"DOH000000000000877\",\"Facility_Reg\":\"04\",\"Facility_Prov\":\"0434\",\"Facility_CityMun\":\"043411\"}]]></Data>\n    </urn:pushApirData>\n  </soapenv:Body>\n</soapenv:Envelope>"
+        },
+        "url": {
+          "raw": "{{base_url}}/webservice/index.php",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "webservice",
+            "index.php"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "webInjury (Data as string)",
+      "request": {
+        "method": "POST",
+        "timeout": 30000,
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=UTF-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"oneiss.doh.gov.ph/webservice/index.php?wsdl\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:webInjury>\n      <Data><![CDATA[{\"Pat_Facility_No\":\"DOH000000000000877\",\"Status\":\"E\",\"rstatuscode\":\"V\",\"date_report\":\"2016-03-29\",\"time_report\":\"08:30:00\",\"reg_no\":\"NM201600100001\",\"tempreg_no\":\"TN0000000100001\",\"hosp_no\":\"1065\",\"ptype_code\":\"i\",\"Pat_Last_Name\":\"Platon\",\"Pat_First_Name\":\"Jonathan\",\"Pat_Middle_Name\":\"Elec\",\"Pat_Sex\":\"M\",\"pno\":\"45\"}]]></Data>\n    </urn:webInjury>\n  </soapenv:Body>\n</soapenv:Envelope>"
+        },
+        "url": {
+          "raw": "{{base_url}}/webservice/index.php",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "webservice",
+            "index.php"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DataSelect (Data as string)",
+      "request": {
+        "method": "POST",
+        "timeout": 30000,
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml;charset=UTF-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"oneiss.doh.gov.ph/webservice/index.php?wsdl\">\n  <soapenv:Header/>\n  <soapenv:Body>\n    <urn:DataSelect>\n      <Data><![CDATA[{\"reg_no\":\"NM201600100001\",\"date_from\":\"2016-03-01\",\"date_to\":\"2016-03-31\"}]]></Data>\n    </urn:DataSelect>\n  </soapenv:Body>\n</soapenv:Envelope>"
         },
         "url": {
           "raw": "{{base_url}}/webservice/index.php",

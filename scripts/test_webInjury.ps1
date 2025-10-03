@@ -1,6 +1,6 @@
 param(
     [string]$BaseUrl = 'http://localhost:8080',
-    [string]$RequestFile = "$PSScriptRoot\..\src\request-samples\pushApirData.xml"
+    [string]$RequestFile = "$PSScriptRoot\..\src\request-samples\webInjury.xml"
 )
 
 $uri = "$BaseUrl/webservice/index.php"

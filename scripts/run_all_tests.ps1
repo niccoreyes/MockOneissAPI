@@ -1,7 +1,10 @@
 # Run all PowerShell test scripts and summarize
 $tests = @(
     "test_pushInjuryData.ps1",
-    "test_pushApirData.ps1"
+    "test_pushApirData.ps1",
+    "test_webInjury.ps1",
+    "test_oneiss.ps1",
+    "test_dataSelect.ps1"
 )
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
